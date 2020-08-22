@@ -48,6 +48,17 @@ class SearchState extends State<SearchScreen> {
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(10))
                       ),
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            focusColor: CustomColors().darkLila,
+                            hintText: "Samsun",
+                            hintStyle: TextStyle(color: CustomColors().brighterGrey),
+                            suffixIcon: Icon(Icons.search)
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
