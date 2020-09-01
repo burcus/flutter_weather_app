@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterweatherapp/bloc/weather_bloc.dart';
 import 'package:flutterweatherapp/utils/custom_colors.dart';
+import 'package:flutterweatherapp/widgets/searchbar.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -8,6 +11,7 @@ class SearchScreen extends StatefulWidget {
 }
 
 class SearchState extends State<SearchScreen> {
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -16,53 +20,26 @@ class SearchState extends State<SearchScreen> {
           body: Stack(
             children: <Widget>[
               Align(
+                child: RichText(
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(text: 'Whather?'),
+                    ]
+                  ),
+                ),
+              ),
+              Align(
                 alignment: Alignment.topCenter,
                 child: FractionallySizedBox(
                   heightFactor: 1,
                   child: Container(
-                    color: CustomColors().lightLila,
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: FractionallySizedBox(
-                  heightFactor: 0.4,
-                  child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius:
-                            BorderRadius.only(topLeft: Radius.circular(250))),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.only(bottom: 250),
-                  child: FractionallySizedBox(
-                    heightFactor: 0.08,
-                    widthFactor: 0.85,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10))
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            focusColor: CustomColors().darkLila,
-                            hintText: "Samsun",
-                            hintStyle: TextStyle(color: CustomColors().brighterGrey),
-                            suffixIcon: Icon(Icons.search)
-                          ),
-                        ),
-                      ),
+                      color: CustomColors().softYellow
                     ),
                   ),
                 ),
               ),
+              SearchBar(),
             ],
           ),
         );
@@ -70,32 +47,3 @@ class SearchState extends State<SearchScreen> {
     );
   }
 }
-
-/*
-  children: <Widget>[
-              Expanded(
-                flex: 7,
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: new LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        CustomColors().darkLila,
-                        CustomColors().lightLila
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 3,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.orange,
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(60)),
-                  ),
-                ),
-              )
-            ],
- */
