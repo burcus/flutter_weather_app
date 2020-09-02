@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterweatherapp/bloc/weather_bloc.dart';
 import 'package:flutterweatherapp/utils/custom_colors.dart';
 import 'package:flutterweatherapp/widgets/searchbar.dart';
 
