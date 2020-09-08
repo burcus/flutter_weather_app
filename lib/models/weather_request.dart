@@ -22,4 +22,5 @@ class WeatherRequest {
       throw Exception("Sorun oluştu");
     }
   }
+
 }

@@ -17,6 +17,7 @@ class SearchState extends State<SearchScreen> {
           body: Stack(
             children: <Widget>[
               Align(
+                alignment: Alignment.topCenter,
                 child: RichText(
                   text: TextSpan(
                     children: <TextSpan>[
