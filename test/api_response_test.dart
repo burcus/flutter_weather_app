@@ -13,7 +13,6 @@ void main(){
     weatherResponse.dispose();
   });
   */
-
   test("api result", () async {
     var weatherResponse = await WeatherRequest().fetchWeathers("Samsun");
     expect(weatherResponse.result.length, 7);

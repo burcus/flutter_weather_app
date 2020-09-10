@@ -8,5 +8,3 @@ class LoadedState extends WeatherState{
   final WeatherResponse weather;
   LoadedState(this.weather);
 }
-
-class LoadingState extends WeatherState{}

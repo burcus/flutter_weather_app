@@ -27,6 +27,8 @@ dependencies:
   flutter_launcher_icons: ^0.7.5
   flutter_bloc: ^6.0.3
   http: ^0.12.2
+  geolocator: ^6.0.0+4
+  geocoder: ^0.2.1
 
 dev_dependencies:
   flutter_test:

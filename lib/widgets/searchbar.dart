@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterweatherapp/bloc/weather_bloc.dart';
-import 'package:flutterweatherapp/bloc/weather_event.dart';
-import 'package:flutterweatherapp/bloc/weather_state.dart';
+import 'package:flutterweatherapp/blocs/weather/weather_bloc.dart';
+import 'package:flutterweatherapp/blocs/weather/weather_event.dart';
+import 'package:flutterweatherapp/blocs/weather/weather_state.dart';
 import 'package:flutterweatherapp/screens/present_screen.dart';
 import 'package:flutterweatherapp/utils/custom_colors.dart';
 
@@ -34,7 +34,6 @@ class SearchBarContent extends StatelessWidget {
     return BlocBuilder(
       cubit: _bloc,
       builder: (context, state) {
-        print("STATE: " + _bloc.state.toString());
         if (state is LoadedState){
           //_bloc.close();
           WidgetsBinding.instance.addPostFrameCallback((_){ //get rid of error which caused by trying to change widget before it is ready not yet
