@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterweatherapp/blocs/weather/weather_bloc.dart';
-import 'package:flutterweatherapp/blocs/weather/weather_event.dart';
-import 'package:flutterweatherapp/blocs/weather/weather_state.dart';
-import 'package:flutterweatherapp/screens/present_screen.dart';
-import 'package:flutterweatherapp/utils/custom_colors.dart';
+import 'package:flutterweatherapp/blocs/blocs.dart';
+import 'package:flutterweatherapp/screens/screens.dart';
+import 'package:flutterweatherapp/utils/utils.dart';
 
 class SearchBar extends StatelessWidget {
   @override

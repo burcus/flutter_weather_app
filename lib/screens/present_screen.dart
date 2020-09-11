@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterweatherapp/models/weather.dart';
-import 'package:flutterweatherapp/models/weather_response.dart';
-import 'package:flutterweatherapp/utils/custom_colors.dart';
+import 'package:flutterweatherapp/models/models.dart';
+import 'package:flutterweatherapp/utils/utils.dart';
 
 class PresentScreen extends StatefulWidget {
   final WeatherResponse weatherResponse;

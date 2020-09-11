@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterweatherapp/blocs/weather/weather_event.dart';
-import 'package:flutterweatherapp/blocs/weather/weather_state.dart';
-import 'package:flutterweatherapp/models/weather_request.dart';
+import 'package:flutterweatherapp/models/models.dart';
+import 'weather.dart';
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState>{
   WeatherBloc(initialState) : super(initialState);

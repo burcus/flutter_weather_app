@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterweatherapp/blocs/localization/localization_bloc.dart';
-import 'package:flutterweatherapp/blocs/localization/localization_event.dart';
-import 'package:flutterweatherapp/blocs/localization/localization_state.dart';
-import 'package:flutterweatherapp/blocs/weather/weather_event.dart';
-import 'package:flutterweatherapp/screens/present_screen.dart';
-import 'package:flutterweatherapp/screens/search_screen.dart';
+import 'package:flutterweatherapp/CustomBlocObserver.dart';
+import 'screens/screens.dart';
+import 'blocs/blocs.dart';
 
-import 'blocs/weather/weather_bloc.dart';
-import 'blocs/weather/weather_state.dart';
 
 void main() {
+  Bloc.observer = CustomBlocObserver();
   runApp(MyApp());
 }
 
@@ -49,48 +45,52 @@ class HomePage extends StatelessWidget {
       body: BlocBuilder(
         cubit: _locationBloc,
         builder: (context, state) {
-          return Center(
-            child: SearchScreen(),
-          );
-          /*
-          //state switch case maybe
-          //_locationBloc.add(CheckPermission());
-          if (state is Always || state is WhileInUse) {
-            _locationBloc.add(GetLocation());
-            return Text("Konumlu Detay Sayfası");
-          } else if (state is LocationInitialState) {
-            //_locationBloc.add(CheckPermission());
-            _locationBloc.add(RequestPermission());
-            return CircularProgressIndicator();
-          } else if (state is LocationSucceed) {
-            _weatherBloc.add(GetWeatherInfo(state.city));
-            return Text(state.city);
-          } else if (state is LoadedState) {
-            return PresentScreen(state.weather);
-          } else if (state is LoadedState) {
-            return PresentScreen(state.weather);
-          } else {
-            //denied, deniedForever or LocationFailed
-            _locationBloc.close();
-            return Center(
-              child: SearchScreen(),
-            );
-          } */
-          print(state);
-          /*
-          if (state is Denied) _locationBloc.add(RequestPermission());
-          if(state is Always || state is WhileInUse) _locationBloc.add(GetLocation());
+          if(state is LocationInitialState) _locationBloc.add(CheckPermission());
+          if(state is Always) _locationBloc.add(GetLocation());
+          if(state is LocationFailed) return SearchScreen();
           if(state is LocationSucceed) _weatherBloc.add(GetWeatherInfo(state.city));
-          if(state is LoadedState) return Text("oldu");
-          //return CircularProgressIndicator();
-          return Text(state.toString());
-
-           */
+          if(state is LoadedState) {
+            print("loadded stateeeeeee");
+            return PresentScreen(state.weather);
+          };
+          return CircularProgressIndicator();
         },
       ),
     );
   }
 }
+
+
+/*
+Scaffold(
+      body: BlocBuilder(
+        cubit: _locationBloc,
+        builder: (context, state) {
+          if(state is LocationInitialState) _locationBloc.add(CheckPermission());
+          if(state is Always) _locationBloc.add(GetLocation());
+          if(state is LocationFailed) return SearchScreen();
+          if(state is LocationSucceed) _weatherBloc.add(GetWeatherInfo(state.city));
+          if(state is LoadedState)  return PresentScreen(state.weather);
+          return CircularProgressIndicator();
+        },
+      ),
+    );
+ */
+
+/*
+      body: BlocBuilder(
+        cubit: _locationBloc,
+        builder: (context, state) {
+          if(state is LocationInitialState) _locationBloc.add(CheckPermission());
+          if(state is Always) _locationBloc.add(GetLocation());
+          if(state is LocationFailed) return SearchScreen();
+          if(state is LocationSucceed) return Text("weather bloca gitmeli"); //_weatherBloc.add(GetWeatherInfo(state.city));
+          if(state is LoadedState)  return PresentScreen(state.weather);
+          print(state);
+          return CircularProgressIndicator();
+        },
+      ),
+ */
 
 /*
 class HomePage extends StatefulWidget {

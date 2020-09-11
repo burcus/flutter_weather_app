@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:flutterweatherapp/models/weather_response.dart';
+import 'package:flutterweatherapp/models/models.dart';
 import 'package:http/http.dart' as http;
 
 class WeatherRequest {

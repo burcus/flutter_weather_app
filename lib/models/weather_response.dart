@@ -1,4 +1,4 @@
-import 'package:flutterweatherapp/models//weather.dart';
+import 'package:flutterweatherapp/models/models.dart';
 
 class WeatherResponse {
   bool success;
