@@ -14,10 +14,7 @@ class SearchBar extends StatelessWidget {
         child: FractionallySizedBox(
           heightFactor: 0.08,
           widthFactor: 0.6,
-          child: BlocProvider(
-            create: (context) => WeatherBloc(InitialState()),
-            child: SearchBarContent(),
-          ),
+          child: SearchBarContent(),
         ),
       ),
     );
@@ -25,49 +22,43 @@ class SearchBar extends StatelessWidget {
 }
 
 class SearchBarContent extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    final _bloc = BlocProvider.of<WeatherBloc>(context);
-    return BlocBuilder(
-      cubit: _bloc,
-      builder: (context, state) {
-        if (state is LoadedState){
+    return BlocListener<WeatherBloc, WeatherState>(
+      listener: (context, state) {
+        if (state is LoadedState) {
           //_bloc.close();
-          WidgetsBinding.instance.addPostFrameCallback((_){ //get rid of error which caused by trying to change widget before it is ready not yet
-            Navigator.push(context, MaterialPageRoute(builder: (context) => PresentScreen(state.weather)));
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            //get rid of error which caused by trying to change widget before it is ready not yet
+            Navigator.push(context, PresentScreen.route());
           });
         }
-        return Container(
-          decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.all(Radius.circular(10))),
-          child: Padding(
-            padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
-            child: TextField(
-              textInputAction: TextInputAction.search,
-              onSubmitted: (city) => _bloc.add(GetWeatherInfo(city)),
-              decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: "Which city?",
-                  hintStyle: TextStyle(color: CustomColors().softGray),
-                  suffixIcon: Icon(
-                    Icons.search,
-                    color: CustomColors().softGray,
-                  )
-              ),
-            ),
-            //ClearableText
-          ),
-        );
       },
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        child: Padding(
+          padding: EdgeInsets.only(bottom: 5, left: 10, right: 10),
+          child: TextField(
+            textInputAction: TextInputAction.search,
+            onSubmitted: (city) =>
+                context.bloc<WeatherBloc>().add(GetWeatherInfo(city)),
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: "Which city?",
+                hintStyle: TextStyle(color: CustomColors().softGray),
+                suffixIcon: Icon(
+                  Icons.search,
+                  color: CustomColors().softGray,
+                )),
+          ),
+          //ClearableText
+        ),
+      ),
     );
   }
 }
-
-
-
-
 
 /*
     return Container(
@@ -93,7 +84,6 @@ class SearchBarContent extends StatelessWidget {
       ),
     );
  */
-
 
 /*
   children: <Widget>[
