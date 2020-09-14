@@ -4,18 +4,18 @@ import 'package:geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
-  LocalizationBloc(LocalizationState initialState) : super(initialState);
+  LocalizationBloc() : super(LocationInitialState());
 
   @override
-  Stream<LocalizationState> mapEventToState(LocalizationEvent event) async*{
-    if(event is CheckPermission){
+  Stream<LocalizationState> mapEventToState(LocalizationEvent event) async* {
+    if (event is CheckPermission) {
       LocationPermission locationPermission = await checkPermission();
       //switch (locationPermission){}
       print(locationPermission);
-      yield GetStateClass(locationPermission);
-    } else if (event is RequestPermission){
+      yield getStateClass(locationPermission);
+    } else if (event is RequestPermission) {
       LocationPermission permission = await requestPermission();
-      yield GetStateClass(permission);
+      yield getStateClass(permission);
       /*
       switch (permission){
         case LocationPermission.always:
@@ -31,32 +31,38 @@ class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
           yield WhileInUse();
       }
        */
-    } else if (event is GetLocation){
-      Position position = await getCurrentPosition(desiredAccuracy: LocationAccuracy.high).catchError((error) => print(error)).catchError((error) => print(error));
+    } else if (event is GetLocation) {
+      Position position =
+          await getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
+              .catchError((error) => print(error))
+              .catchError((error) => print(error));
       //Position lastKnown = await getLastKnownPosition();
-      if(position == null || (position.latitude == 0.0 && position.longitude == 0.0)) position = await getLastKnownPosition();  //If current position is not significant use last known position
+      if (position == null ||
+          (position.latitude == 0.0 && position.longitude == 0.0))
+        position =
+            await getLastKnownPosition(); //If current position is not significant use last known position
       var coordinates = new Coordinates(position.latitude, position.longitude);
       var city;
       try {
-        var location = await Geocoder.local.findAddressesFromCoordinates(coordinates);
+        var location =
+            await Geocoder.local.findAddressesFromCoordinates(coordinates);
         city = splitAddressLine(location.first.addressLine);
         yield LocationSucceed(city);
-      }
-      catch (error) {
+      } catch (error) {
         print(error);
         yield LocationFailed();
       }
     }
   }
 
-  String splitAddressLine(String address){
+  String splitAddressLine(String address) {
     var sp = address.split(",");
-    return sp[sp.length-2].split("/").removeLast();
+    return sp[sp.length - 2].split("/").removeLast();
   }
 
-  LocalizationState GetStateClass(LocationPermission permission){
+  LocalizationState getStateClass(LocationPermission permission) {
     //print("PERMISSION:  " + permission.toString());
-    switch (permission){
+    switch (permission) {
       case LocationPermission.always:
         return Always();
         break;
@@ -68,6 +74,8 @@ class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
         break;
       case LocationPermission.whileInUse:
         return WhileInUse();
+      default:
+        return Always();
     }
   }
 }
