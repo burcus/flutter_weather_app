@@ -13,6 +13,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    WidgetsApp.debugAllowBannerOverride = false;
     return MultiBlocProvider(
       providers: [
         BlocProvider<LocalizationBloc>(
