@@ -21,11 +21,10 @@ class CustomBlocObserver extends BlocObserver {
 
   @override
   void onChange(Cubit cubit, Change change) {
-    // when cubit is a bloc then we don't want to print the change because onTransition will already print it.
-    if (cubit is Bloc) {
-      return;
-    }
     super.onChange(cubit, change);
-    print('onTransition $change');
+    // when cubit is a bloc then we don't want to print the change because onTransition will already print it.
+    if (cubit is! Bloc) {
+      print('onTransition $change');
+    }
   }
 }
