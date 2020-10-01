@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterweatherapp/models/models.dart';
 
-class WeatherCard extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return Text("Weathers");
-  }
+Widget weatherCard(Weather weather) {
+  return Text(weather.date + " " + weather.status);
 }

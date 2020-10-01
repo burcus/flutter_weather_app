@@ -29,6 +29,8 @@ dependencies:
   http: ^0.12.2
   geolocator: ^6.0.0+4
   geocoder: ^0.2.1
+  carousel_slider: ^2.3.1
+
 
 dev_dependencies:
   flutter_test:

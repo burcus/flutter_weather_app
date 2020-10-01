@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
 import 'package:flutterweatherapp/screens/screens.dart';
 import 'package:flutterweatherapp/utils/utils.dart';
-import 'package:flutterweatherapp/widgets/weather_searchbar.dart';
+import 'package:flutterweatherapp/widgets/weather_search_bar.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen._();
@@ -30,10 +30,9 @@ class _Search extends StatelessWidget {
         if (state is WeatherLoadSuccess) {
           final weather = state.weather;
           final weathers = weather.result;
-          context.bloc<ThemeBloc>().add(GetTheme(weathers[0].status));
-          //_bloc.close();
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            //get rid of error which caused by trying to change widget before it is ready not yet
+          context.bloc<ThemeBloc>().add(GetTheme(weathers[0].status)); //use single bloc listener instead of multi listener cause theme state will be checked already in present screen
+
+          WidgetsBinding.instance.addPostFrameCallback((_) { //get rid of error which caused by trying to change widget before it is ready not yet
             Navigator.push(context, PresentScreen.route());
           });
         }
@@ -64,28 +63,3 @@ class _Search extends StatelessWidget {
     );
   }
 }
-
-
-/*
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Scaffold(
-          body: Stack(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.topCenter,
-                child: FractionallySizedBox(
-                  heightFactor: 1,
-                  child: Container(
-                    decoration: BoxDecoration(color: CustomColors().softYellow),
-                  ),
-                ),
-              ),
-              SearchBar(),
-            ],
-          ),
-        );
-      },
-    );
-  }
-     */

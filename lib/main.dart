@@ -24,6 +24,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<WeatherBloc>(
           create: (context) => WeatherBloc(),
         ),
+        BlocProvider<ThemeBloc>(
+          create: (context) => ThemeBloc(),
+        ),
       ],
       child: MaterialApp(
         home: HomePage(),
