@@ -6,7 +6,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
 
   @override
   Stream<ThemeState> mapEventToState(ThemeEvent event) {
-    var theme = new Theme();
+    var theme = new ThemeLoaded();
 
     if(event is GetTheme) {
       switch(event.status) {
@@ -21,5 +21,4 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       }
     }
   }
-  
 }

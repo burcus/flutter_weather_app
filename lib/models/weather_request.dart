@@ -19,8 +19,7 @@ class WeatherRequest {
       String result = response.body;
       return WeatherResponse.fromJson(jsonDecode(result));
     } else {
-      throw Exception("Sorun oluştu");
+      return null;
     }
   }
-
 }

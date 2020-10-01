@@ -4,7 +4,9 @@ abstract class WeatherState {}
 
 class InitialState extends WeatherState{}
 
-class LoadedState extends WeatherState{
+class WeatherLoadSuccess extends WeatherState{
   final WeatherResponse weather;
-  LoadedState(this.weather);
+  WeatherLoadSuccess(this.weather);
 }
+
+class WeatherLoadFailed extends WeatherState{}
