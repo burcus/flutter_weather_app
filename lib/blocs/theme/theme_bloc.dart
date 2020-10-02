@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'theme.dart';
 
@@ -8,32 +7,33 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   @override
   Stream<ThemeState> mapEventToState(ThemeEvent event) async* {
     if(event is GetTheme) {
-      String imagePath = "assets/images/weather_status";
+      String image;
       ThemeLoaded theme;
       switch(event.description) {
         case "kapalı":
-          imagePath += "overcast";
+          image = "overcast";
           break;
         case "parçalı az bulutlu":
-          imagePath += "partly-cloudy";
+          image = "partly-cloudy";
           break;
         case "az bulutlu":
-          imagePath += "partly-cloudy-more-clear";
+          image = "partly-cloudy-more-clear";
           break;
         case "hafif yağmur":
-          imagePath += "rain";
+          image = "rain";
           break;
         case "açık":
-          imagePath += "clear";
+          image = "clear";
           break;
         case "parçalı bulutlu":
-          imagePath += "cloud";
+          image = "cloud";
           break;
         case "orta şiddetli yağmur":
         case "şiddetli yağmur":
-          imagePath += "thunder";
+          image = "thunder";
           break;
       }
+      String imagePath = "assets/images/weather_status/" + image + ".jpg";
       yield ThemeLoaded(imagePath);
     }
   }

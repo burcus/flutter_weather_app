@@ -25,14 +25,15 @@ class _Present extends StatelessWidget {
       cubit: BlocProvider.of<ThemeBloc>(context),
       builder: (context, state) {
         if (state is ThemeLoaded) {
-          return cover(context);
-        } else return Text("tema yüklenmedi"); //todo
+          return cover(context, state.bgImage);
+        } else
+          return Text("tema yüklenmedi"); //todo
       },
     );
   }
 }
 
-Widget cover(BuildContext context) {
+Widget cover(BuildContext context, String imagePath) {
   //TODO return LayoutBuilder();
   return Scaffold(
     body: SafeArea(
@@ -42,11 +43,13 @@ Widget cover(BuildContext context) {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              //color: bgColor,
+              image: DecorationImage(
+                  image: AssetImage(imagePath), fit: BoxFit.cover,
+                  colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.4), BlendMode.lighten)
+              ),
             ),
-            height: MediaQuery.of(context).size.height * 3 / 5,
+            height: MediaQuery.of(context).size.height * 4 / 5,
             width: MediaQuery.of(context).size.width,
-            child: Text("test"),
           ),
           Expanded(
             child: Container(
