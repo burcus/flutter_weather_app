@@ -25,21 +25,16 @@ class _Present extends StatelessWidget {
       cubit: BlocProvider.of<ThemeBloc>(context),
       builder: (context, state) {
         if (state is ThemeLoaded) {
-          return MaterialApp(
-            theme: state.theme,
-            home: coverage(context),
-          );
-        } else
-          return Text("ignore"); //ToDO
+          return cover(context);
+        } else return Text("tema yüklenmedi"); //todo
       },
     );
   }
 }
 
-Widget coverage(BuildContext context) {
+Widget cover(BuildContext context) {
   //TODO return LayoutBuilder();
   return Scaffold(
-    backgroundColor: Theme.of(context).accentColor,
     body: SafeArea(
       top: true,
       bottom: true,
@@ -47,9 +42,9 @@ Widget coverage(BuildContext context) {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              color: Colors.yellow,
+              //color: bgColor,
             ),
-            height: MediaQuery.of(context).size.height*3/5,
+            height: MediaQuery.of(context).size.height * 3 / 5,
             width: MediaQuery.of(context).size.width,
             child: Text("test"),
           ),
@@ -57,7 +52,7 @@ Widget coverage(BuildContext context) {
             child: Container(
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                color: Colors.indigo,
+                color: Theme.of(context).accentColor,
               ),
               child: WeatherCards(),
             ),

@@ -8,25 +8,33 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   @override
   Stream<ThemeState> mapEventToState(ThemeEvent event) async* {
     if(event is GetTheme) {
-      ThemeData theme = ThemeData(
-        accentColor: Colors.black12,
-        primaryColor: Colors.black,
-      );
-      switch(event.status) {
-        case "Clear":
-          theme = ThemeData(
-            accentColor: Colors.amberAccent,
-            primaryColor: Colors.amber,
-          );
+      String imagePath = "assets/images/weather_status";
+      ThemeLoaded theme;
+      switch(event.description) {
+        case "kapalı":
+          imagePath += "overcast";
           break;
-        case "Rain":
-          theme = ThemeData(
-            accentColor: Colors.indigoAccent,
-            primaryColor: Colors.indigo,
-          );
+        case "parçalı az bulutlu":
+          imagePath += "partly-cloudy";
+          break;
+        case "az bulutlu":
+          imagePath += "partly-cloudy-more-clear";
+          break;
+        case "hafif yağmur":
+          imagePath += "rain";
+          break;
+        case "açık":
+          imagePath += "clear";
+          break;
+        case "parçalı bulutlu":
+          imagePath += "cloud";
+          break;
+        case "orta şiddetli yağmur":
+        case "şiddetli yağmur":
+          imagePath += "thunder";
           break;
       }
-      yield ThemeLoaded(theme);
+      yield ThemeLoaded(imagePath);
     }
   }
 }

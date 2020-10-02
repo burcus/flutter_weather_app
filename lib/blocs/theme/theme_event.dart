@@ -1,7 +1,7 @@
 abstract class ThemeEvent {}
 
 class GetTheme extends ThemeEvent{
-  String status;
+  String description;
 
-  GetTheme(this.status);
+  GetTheme(this.description);
 }
