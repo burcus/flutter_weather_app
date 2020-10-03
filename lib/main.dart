@@ -45,12 +45,10 @@ class HomePage extends StatelessWidget {
             listener: (BuildContext context, state) {
               if (state is Always)
                 context.bloc<LocalizationBloc>().add(GetLocation());
-              if (state is Denied)
-                Navigator.of(context).push(SearchScreen.route());
+              if (state is Denied || state is LocationFailed)
+                Navigator.of(context).pushReplacement(SearchScreen.route());
               if (state is LocationSucceed)
                 context.bloc<WeatherBloc>().add(GetWeatherInfo(state.city));
-              if (state is LocationFailed)
-                Navigator.of(context).push(SearchScreen.route());
             },
           ),
           BlocListener<WeatherBloc, WeatherState>(
@@ -58,21 +56,15 @@ class HomePage extends StatelessWidget {
               if (state is WeatherLoadSuccess) {
                 final weathers = state.weather.result;
                 context.bloc<ThemeBloc>().add(GetTheme(weathers[0].description)); //start getting theme before navigate to listing screen
-                Navigator.of(context).push(PresentScreen.route());
+                Navigator.of(context).pushReplacement(PresentScreen.route()); //avoid back button infinitive loading spinner so don't use push
               }
-              //if (state is WeatherLoadFailed)
-                //Navigator.of(context).push(SearchScreen.route());
             },
-            //TODO: navigate to error page
           ),
         ],
         child: Center(
-          child: const LoadingSpinner(),
+          child: const LoadingSpinner(), //todo may remove
         ),
       ),
-
-      //todo use bloc consumer
-
     );
   }
 }

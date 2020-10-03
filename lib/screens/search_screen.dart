@@ -15,7 +15,8 @@ class SearchScreen extends StatelessWidget {
     return const _Search();
   }
 
-  static Route route() => MaterialPageRoute(
+  static Route route() =>
+      MaterialPageRoute(
         builder: (_) => const SearchScreen._(),
       );
 }
@@ -27,19 +28,16 @@ class _Search extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<WeatherBloc, WeatherState>(
       listener: (context, state) {
-        if (state is WeatherLoadSuccess) { //TODO CHECK HERE
-          //final weather = state.weather;
-          //final weathers = weather.result;
-          //context.bloc<ThemeBloc>().add(GetTheme(weathers[0].description)); //use single bloc listener instead of multi listener cause theme state will be checked already in present screen
-          /*
-          WidgetsBinding.instance.addPostFrameCallback((_) { //get rid of error which caused by trying to change widget before it is ready not yet
-            Navigator.push(context, PresentScreen.route());
-          });
-
-           */
+        if (state is WeatherLoadSuccess) {
+          //TODO CHECK HERE
+          final weather = state.weather;
+          final weathers = weather.result;
+          context.bloc<ThemeBloc>().add(GetTheme(weathers[0]
+              .description)); //use single bloc listener instead of multi listener cause theme state will be checked already in present screen
+          Navigator.push(context, PresentScreen.route()
+          //WidgetsBinding.instance.addPostFrameCallback((_) { Navigator.push(context, PresentScreen.route()); } //get rid of error which caused by trying to change widget before it is ready not yet
+          );
         }
-        if (state is WeatherLoadFailed){}
-          //Navigator.of(context).push(SearchScreen.route());
       },
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -52,7 +50,7 @@ class _Search extends StatelessWidget {
                     heightFactor: 1,
                     child: Container(
                       decoration:
-                          BoxDecoration(color: CustomColors().softYellow),
+                      BoxDecoration(color: CustomColors().softYellow),
                     ),
                   ),
                 ),
