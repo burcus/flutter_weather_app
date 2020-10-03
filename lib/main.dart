@@ -60,8 +60,8 @@ class HomePage extends StatelessWidget {
                 context.bloc<ThemeBloc>().add(GetTheme(weathers[0].description)); //start getting theme before navigate to listing screen
                 Navigator.of(context).push(PresentScreen.route());
               }
-              if (state is WeatherLoadFailed)
-                Navigator.of(context).push(SearchScreen.route());
+              //if (state is WeatherLoadFailed)
+                //Navigator.of(context).push(SearchScreen.route());
             },
             //TODO: navigate to error page
           ),
