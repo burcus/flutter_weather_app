@@ -17,14 +17,18 @@ class WeatherCards extends StatelessWidget {
                   itemCount: state.weather.result.length,
                   itemBuilder: (BuildContext context, int index) {
                     return new GestureDetector(
-                      onTap: (){print(index);},
+                      onTap: (){
+                        print("Tıklanan description: " + state.weather.result[index].description + " " + state.weather.result[index].degree);
+                        context.bloc<WeatherBloc>().add(ChangeThemeWeather(state.weather.result[index]));
+                        context.bloc<ThemeBloc>().add(GetTheme(state.weather.result[index].description));
+                      },
                       child: weatherCard(state.weather.result[index]),
                     );
                   }),
             ),
           );
         } else
-          return Text("todo");
+          return Text("todo"); //todo fix this issue
       },
     );
   }

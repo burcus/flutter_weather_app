@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
-import 'package:flutterweatherapp/widgets/today_chart.dart';
+import 'package:flutterweatherapp/widgets/theme_day_chart.dart';
 import 'package:flutterweatherapp/widgets/weather_cards.dart';
 import 'package:flutterweatherapp/widgets/weather_theme_container.dart';
 
@@ -55,7 +55,7 @@ Widget cover(BuildContext context, String imagePath) {
                   child: weatherThemeContainer(context, imagePath)
               ),
               Align(
-                child: TodayChart(),
+                child: ThemeDayChart(),
               )
             ],
           ),

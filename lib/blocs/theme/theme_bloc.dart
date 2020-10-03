@@ -38,7 +38,6 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
           break;
       }
       String imagePath = "assets/images/weather_status/" + image + ".jpg";
-      //yield ThemeLoaded(imagePath, primaryColor);
       yield ThemeLoaded(imagePath);
     }
   }

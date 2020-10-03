@@ -1,3 +1,4 @@
+import 'package:flutterweatherapp/models/models.dart';
 import 'package:flutterweatherapp/models/weather_response.dart';
 
 abstract class WeatherState {}
@@ -10,3 +11,8 @@ class WeatherLoadSuccess extends WeatherState{
 }
 
 class WeatherLoadFailed extends WeatherState{}
+
+class WeatherChanged extends WeatherState{
+  final Weather weather;
+  WeatherChanged(this.weather);
+}
