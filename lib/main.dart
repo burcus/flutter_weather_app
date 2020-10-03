@@ -45,6 +45,8 @@ class HomePage extends StatelessWidget {
             listener: (BuildContext context, state) {
               if (state is Always)
                 context.bloc<LocalizationBloc>().add(GetLocation());
+              if (state is Denied)
+                Navigator.of(context).push(SearchScreen.route());
               if (state is LocationSucceed)
                 context.bloc<WeatherBloc>().add(GetWeatherInfo(state.city));
               if (state is LocationFailed)

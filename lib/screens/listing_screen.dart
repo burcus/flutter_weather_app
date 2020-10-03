@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
+import 'package:flutterweatherapp/widgets/today_chart.dart';
 import 'package:flutterweatherapp/widgets/weather_cards.dart';
+import 'package:flutterweatherapp/widgets/weather_theme_container.dart';
 
 class PresentScreen extends StatelessWidget {
   const PresentScreen._();
@@ -41,25 +43,23 @@ Widget cover(BuildContext context, String imagePath) {
       bottom: true,
       child: Column(
         children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(imagePath), fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.4), BlendMode.lighten)
+          Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              ShaderMask(
+                shaderCallback: (rect) {
+                  return LinearGradient(colors: [Colors.white.withOpacity(0.9), Colors.white.withOpacity(0)],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter).createShader(rect);
+                },
+                  child: weatherThemeContainer(context, imagePath)
               ),
-            ),
-            height: MediaQuery.of(context).size.height * 4 / 5,
-            width: MediaQuery.of(context).size.width,
+              Align(
+                child: TodayChart(),
+              )
+            ],
           ),
-          Expanded(
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: Theme.of(context).accentColor,
-              ),
-              child: WeatherCards(),
-            ),
-          ),
+          WeatherCards(),
         ],
       ),
     ),
