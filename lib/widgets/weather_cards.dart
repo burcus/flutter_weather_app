@@ -8,14 +8,23 @@ class WeatherCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<WeatherBloc, WeatherState>(
       builder: (context, state) {
-        if(state is WeatherLoadSuccess) {
-          return ListView.builder(
-            itemCount: state.weather.result.length,
-            itemBuilder: (BuildContext context, int index) {
-                return weatherCard(state.weather.result[index]);
-            },
+        if (state is WeatherLoadSuccess) {
+          return Expanded(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: state.weather.result.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return new GestureDetector(
+                      onTap: (){print(index);},
+                      child: weatherCard(state.weather.result[index]),
+                    );
+                  }),
+            ),
           );
-        } else return Text("todo");
+        } else
+          return Text("todo");
       },
     );
   }

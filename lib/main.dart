@@ -45,6 +45,8 @@ class HomePage extends StatelessWidget {
             listener: (BuildContext context, state) {
               if (state is Always)
                 context.bloc<LocalizationBloc>().add(GetLocation());
+              if (state is Denied)
+                Navigator.of(context).push(SearchScreen.route());
               if (state is LocationSucceed)
                 context.bloc<WeatherBloc>().add(GetWeatherInfo(state.city));
               if (state is LocationFailed)
@@ -55,7 +57,7 @@ class HomePage extends StatelessWidget {
             listener: (context, state) {
               if (state is WeatherLoadSuccess) {
                 final weathers = state.weather.result;
-                context.bloc<ThemeBloc>().add(GetTheme(weathers[0].status)); //start getting theme before navigate to listing screen
+                context.bloc<ThemeBloc>().add(GetTheme(weathers[0].description)); //start getting theme before navigate to listing screen
                 Navigator.of(context).push(PresentScreen.route());
               }
               if (state is WeatherLoadFailed)

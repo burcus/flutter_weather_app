@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
+import 'package:flutterweatherapp/widgets/today_chart.dart';
 import 'package:flutterweatherapp/widgets/weather_cards.dart';
+import 'package:flutterweatherapp/widgets/weather_theme_container.dart';
 
 class PresentScreen extends StatelessWidget {
   const PresentScreen._();
@@ -25,14 +27,15 @@ class _Present extends StatelessWidget {
       cubit: BlocProvider.of<ThemeBloc>(context),
       builder: (context, state) {
         if (state is ThemeLoaded) {
-          return cover(context);
-        } else return Text("tema yüklenmedi"); //todo
+          return cover(context, state.bgImage);
+        } else
+          return Text("tema yüklenmedi"); //todo
       },
     );
   }
 }
 
-Widget cover(BuildContext context) {
+Widget cover(BuildContext context, String imagePath) {
   //TODO return LayoutBuilder();
   return Scaffold(
     body: SafeArea(
@@ -40,23 +43,23 @@ Widget cover(BuildContext context) {
       bottom: true,
       child: Column(
         children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              //color: bgColor,
-            ),
-            height: MediaQuery.of(context).size.height * 3 / 5,
-            width: MediaQuery.of(context).size.width,
-            child: Text("test"),
-          ),
-          Expanded(
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: Theme.of(context).accentColor,
+          Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              ShaderMask(
+                shaderCallback: (rect) {
+                  return LinearGradient(colors: [Colors.white.withOpacity(0.9), Colors.white.withOpacity(0)],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter).createShader(rect);
+                },
+                  child: weatherThemeContainer(context, imagePath)
               ),
-              child: WeatherCards(),
-            ),
+              Align(
+                child: TodayChart(),
+              )
+            ],
           ),
+          WeatherCards(),
         ],
       ),
     ),

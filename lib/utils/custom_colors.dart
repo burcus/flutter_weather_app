@@ -9,12 +9,13 @@ class CustomColors {
   Color _softYellow = Color(0xFFf2f343);
   Color _softGray = Color(0xFF252432);
 
-  //Rain
-
-  //Clear
-
-  //Cloud
-
+  Color get logoOrange => _logoOrange;
+  Color get brighterGrey => _brighterGrey;
+  Color get lightLila => _lightLila;
+  Color get darkLila => _darkLila;
+  Color get softGray => _softGray;
+  Color get logoYellow => _logoYellow;
+  Color get softYellow => _softYellow;
 
   Color logoOrangewithOpacitiy(double opacitity) {
     return _logoOrange.withOpacity(opacitity);
@@ -23,12 +24,16 @@ class CustomColors {
   Color logoYellowithOpacitiy(double opacitity) {
     return _logoYellow.withOpacity(opacitity);
   }
+  //Rain
 
-  Color get logoOrange => _logoOrange;
-  Color get brighterGrey => _brighterGrey;
-  Color get lightLila => _lightLila;
-  Color get darkLila => _darkLila;
-  Color get softGray => _softGray;
-  Color get logoYellow => _logoYellow;
-  Color get softYellow => _softYellow;
+  //Clear
+
+  //partly-cloudy
+  Color _cloudyGray = Color(0xFFe5d6d1);
+
+  Color get cloudyGray => _cloudyGray;
+
+  Color cloudyGrayWithOpacity(double opacity) {
+    return _cloudyGray.withOpacity(opacity);
+  }
 }
