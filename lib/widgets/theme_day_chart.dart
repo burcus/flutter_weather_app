@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
 import 'package:flutterweatherapp/utils/utils.dart';
+import 'package:flutterweatherapp/widgets/weather_details.dart';
 
 class ThemeDayChart extends StatelessWidget {
   @override
@@ -11,12 +12,12 @@ class ThemeDayChart extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: Colors.transparent,
-        //border: Border.all(width: 2),
+        border: Border.all(width: 2),
       ),
       width: MediaQuery.of(context).size.width / 2,
-      height: MediaQuery.of(context).size.height / 4,
+      height: MediaQuery.of(context).size.height / 3,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           BlocBuilder<WeatherBloc, WeatherState>(
             builder: (context, state) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttericon/entypo_icons.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
 import 'package:fluttericon/typicons_icons.dart';
 
@@ -27,6 +28,10 @@ class WeatherIcons extends StatelessWidget {
         return Icon(FontAwesome5.cloud_showers_heavy, size: 20);
       case "şiddetli yağmur":
         return Icon(Typicons.cloud_flash, size: 20);
+      case "gece":
+        return Icon(FontAwesome5.moon, size: 20);
+      case "nem":
+        return Icon(Entypo.droplet, size: 20);
     }
   }
 }

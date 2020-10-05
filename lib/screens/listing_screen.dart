@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
 import 'package:flutterweatherapp/widgets/theme_day_chart.dart';
 import 'package:flutterweatherapp/widgets/weather_cards.dart';
+import 'package:flutterweatherapp/widgets/weather_details.dart';
 import 'package:flutterweatherapp/widgets/weather_theme_image.dart';
 
 class PresentScreen extends StatelessWidget {
@@ -55,9 +56,29 @@ Widget cover(BuildContext context, String imagePath) {
                         .createShader(rect);
                   },
                   child: weatherThemeImage(context, imagePath)),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.center,
+                    child: ThemeDayChart(),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: EdgeInsets.all(30),
+                      child: WeatherDetails(),
+                    ),
+                  )
+                ],
+              ),
+              /*
               Align(
+                alignment: Alignment.center,
                 child: ThemeDayChart(),
-              )
+              ),
+              WeatherDetails(),
+               */
             ],
           ),
           WeatherCards(),
