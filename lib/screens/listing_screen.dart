@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
-import 'package:flutterweatherapp/widgets/theme_day_chart.dart';
-import 'package:flutterweatherapp/widgets/weather_cards.dart';
-import 'package:flutterweatherapp/widgets/weather_details.dart';
-import 'package:flutterweatherapp/widgets/weather_theme_image.dart';
+import 'package:flutterweatherapp/widgets/widgets.dart';
 
 class PresentScreen extends StatelessWidget {
   const PresentScreen._();
@@ -50,8 +47,9 @@ Widget cover(BuildContext context, String imagePath) {
               ShaderMask(
                   shaderCallback: (rect) {
                     return LinearGradient(colors: [
-                      Colors.white.withOpacity(0.9),
-                      Colors.white.withOpacity(0.2)
+                      Colors.white.withOpacity(0.4),
+                      Colors.white.withOpacity(0.5),
+                      Colors.white.withOpacity(0)
                     ], begin: Alignment.topCenter, end: Alignment.bottomCenter)
                         .createShader(rect);
                   },

@@ -29,7 +29,7 @@ class WeatherIcons extends StatelessWidget {
       case "şiddetli yağmur":
         return Icon(Typicons.cloud_flash, size: 20);
       case "gece":
-        return Icon(FontAwesome5.moon, size: 20);
+        return Icon(FontAwesome5.moon, size: 15);
       case "nem":
         return Icon(Entypo.droplet, size: 20);
     }

@@ -7,7 +7,7 @@ Widget weatherCard(Weather weather) {
   return AspectRatio(
     aspectRatio: 4 / 5,
     child: Container(
-      decoration: BoxDecoration(color: Colors.black12),
+      //decoration: BoxDecoration(color: Colors.black12),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[

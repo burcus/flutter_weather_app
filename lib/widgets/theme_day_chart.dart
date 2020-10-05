@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
 import 'package:flutterweatherapp/utils/utils.dart';
-import 'package:flutterweatherapp/widgets/weather_details.dart';
 
 class ThemeDayChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
+      /*
       decoration: BoxDecoration(
         color: Colors.transparent,
         border: Border.all(width: 2),
       ),
+       */
       width: MediaQuery.of(context).size.width / 2,
       height: MediaQuery.of(context).size.height / 3,
       child: Column(
@@ -34,6 +35,7 @@ class ThemeDayChart extends StatelessWidget {
                 throw Exception("Weather cityName: unexcepted");
             },
           ),
+          Spacer(flex: 1,),
           BlocBuilder<ThemeBloc, ThemeState>(
             builder: (context, state) {
               if (state is ThemeLoaded) {
@@ -43,7 +45,10 @@ class ThemeDayChart extends StatelessWidget {
                     children: <TextSpan>[
                       TextSpan(
                           text: state.weather.degree + "\u00B0 \n",
-                          style: TextStyle(fontSize: 60, color: Colors.black)),
+                          style: TextStyle(fontSize: 62, color: Colors.black)),
+                      TextSpan(
+                          text: state.weather.day + " / ",
+                          style: TextStyle(fontSize: 15, color: Colors.black)),
                       TextSpan(
                           text: state.weather.description.capitalize(),
                           style: TextStyle(fontSize: 15, color: Colors.black)),
