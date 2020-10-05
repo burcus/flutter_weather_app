@@ -36,4 +36,11 @@ class CustomColors {
   Color cloudyGrayWithOpacity(double opacity) {
     return _cloudyGray.withOpacity(opacity);
   }
+
+  //clear
+  Color _clearGreen = Color(0xFF517c33);
+  Color get clearGreen => _clearGreen;
+  Color clearGreenWithOpacity(double opacity) {
+    return _cloudyGray.withOpacity(opacity);
+  }
 }

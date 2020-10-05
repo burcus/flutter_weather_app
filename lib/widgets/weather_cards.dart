@@ -19,10 +19,13 @@ class WeatherCards extends StatelessWidget {
                     return new GestureDetector(
                       onTap: (){
                         print("Tıklanan description: " + state.weather.result[index].description + " " + state.weather.result[index].degree);
-                        print(state.weather.result[index].runtimeType);
+                        print(state.weather.result[index].description);
                         context.bloc<ThemeBloc>().add(GetTheme(state.weather.result[index]));
                       },
-                      child: weatherCard(state.weather.result[index]),
+                      child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: weatherCard(state.weather.result[index]),
+                      ),
                     );
                   }),
             ),

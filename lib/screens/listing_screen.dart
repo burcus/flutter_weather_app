@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
 import 'package:flutterweatherapp/widgets/theme_day_chart.dart';
 import 'package:flutterweatherapp/widgets/weather_cards.dart';
-import 'package:flutterweatherapp/widgets/weather_theme_container.dart';
+import 'package:flutterweatherapp/widgets/weather_theme_image.dart';
 
 class PresentScreen extends StatelessWidget {
   const PresentScreen._();
@@ -29,7 +29,7 @@ class _Present extends StatelessWidget {
         if (state is ThemeLoaded) {
           return cover(context, state.bgImage);
         } else
-          return Text("tema yüklenmedi"); //todo
+          throw Exception("Theme state: unexpected");
       },
     );
   }
@@ -47,13 +47,14 @@ Widget cover(BuildContext context, String imagePath) {
             alignment: Alignment.center,
             children: <Widget>[
               ShaderMask(
-                shaderCallback: (rect) {
-                  return LinearGradient(colors: [Colors.white.withOpacity(0.9), Colors.white.withOpacity(0)],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter).createShader(rect);
-                },
-                  child: weatherThemeContainer(context, imagePath)
-              ),
+                  shaderCallback: (rect) {
+                    return LinearGradient(colors: [
+                      Colors.white.withOpacity(0.9),
+                      Colors.white.withOpacity(0.2)
+                    ], begin: Alignment.topCenter, end: Alignment.bottomCenter)
+                        .createShader(rect);
+                  },
+                  child: weatherThemeImage(context, imagePath)),
               Align(
                 child: ThemeDayChart(),
               )
