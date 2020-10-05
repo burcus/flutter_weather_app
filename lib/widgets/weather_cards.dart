@@ -19,8 +19,8 @@ class WeatherCards extends StatelessWidget {
                     return new GestureDetector(
                       onTap: (){
                         print("Tıklanan description: " + state.weather.result[index].description + " " + state.weather.result[index].degree);
-                        context.bloc<WeatherBloc>().add(ChangeThemeWeather(state.weather.result[index]));
-                        context.bloc<ThemeBloc>().add(GetTheme(state.weather.result[index].description));
+                        print(state.weather.result[index].runtimeType);
+                        context.bloc<ThemeBloc>().add(GetTheme(state.weather.result[index]));
                       },
                       child: weatherCard(state.weather.result[index]),
                     );

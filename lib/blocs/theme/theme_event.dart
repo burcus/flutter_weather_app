@@ -1,6 +1,8 @@
+import 'package:flutterweatherapp/models/models.dart';
+
 abstract class ThemeEvent {}
 
 class GetTheme extends ThemeEvent{
-  String description;
-  GetTheme(this.description);
+  final Weather weather;
+  GetTheme(this.weather);
 }

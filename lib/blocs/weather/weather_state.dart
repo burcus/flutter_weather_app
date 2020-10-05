@@ -11,8 +11,3 @@ class WeatherLoadSuccess extends WeatherState{
 }
 
 class WeatherLoadFailed extends WeatherState{}
-
-class WeatherChanged extends WeatherState{
-  final Weather weather;
-  WeatherChanged(this.weather);
-}

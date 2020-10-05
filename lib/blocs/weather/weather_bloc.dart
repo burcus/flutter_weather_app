@@ -12,8 +12,5 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       if(res!= null && res.success) yield WeatherLoadSuccess(res);
       else yield WeatherLoadFailed();
     }
-    if (event is ChangeThemeWeather) {
-      yield WeatherChanged(event.weather);
-    }
   }
 }

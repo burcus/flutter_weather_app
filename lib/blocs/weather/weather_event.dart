@@ -6,8 +6,3 @@ class GetWeatherInfo extends WeatherEvent{
   String cityName;
   GetWeatherInfo(this.cityName);
 }
-
-class ChangeThemeWeather extends WeatherEvent{
-  Weather weather;
-  ChangeThemeWeather(this.weather);
-}

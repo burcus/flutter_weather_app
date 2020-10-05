@@ -32,8 +32,7 @@ class _Search extends StatelessWidget {
           //TODO CHECK HERE
           final weather = state.weather;
           final weathers = weather.result;
-          context.bloc<ThemeBloc>().add(GetTheme(weathers[0]
-              .description)); //use single bloc listener instead of multi listener cause theme state will be checked already in present screen
+          context.bloc<ThemeBloc>().add(GetTheme(weathers[0])); //use single bloc listener instead of multi listener cause theme state will be checked already in present screen
           Navigator.push(context, PresentScreen.route()
           //WidgetsBinding.instance.addPostFrameCallback((_) { Navigator.push(context, PresentScreen.route()); } //get rid of error which caused by trying to change widget before it is ready not yet
           );

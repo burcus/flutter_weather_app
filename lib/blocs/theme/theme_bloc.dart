@@ -12,7 +12,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       String image;
       Color primaryColor, imageFilterColor;
       ThemeLoaded theme;
-      switch(event.description) {
+      switch(event.weather.description) {
         case "kapalı":
           image = "overcast";
           break;
@@ -38,7 +38,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
           break;
       }
       String imagePath = "assets/images/weather_status/" + image + ".jpg";
-      yield ThemeLoaded(imagePath);
+      yield ThemeLoaded(imagePath, event.weather);
     }
   }
 }
