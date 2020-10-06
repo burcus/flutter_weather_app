@@ -27,10 +27,7 @@ class ThemeDayChart extends StatelessWidget {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         text: state.weather.city.toUpperCase(),
-                        style: TextStyle(
-                            fontSize: 20,
-                            color:
-                                Colors.black))); //TODO make fontsize responsive
+                        style: CustomTextTheme(context).display2)); //TODO make fontsize responsive
               } else
                 throw Exception("Weather cityName: unexcepted");
             },
@@ -45,13 +42,13 @@ class ThemeDayChart extends StatelessWidget {
                     children: <TextSpan>[
                       TextSpan(
                           text: state.weather.degree + "\u00B0 \n",
-                          style: TextStyle(fontSize: 62, color: Colors.black)),
+                          style: CustomTextTheme(context).display1),
                       TextSpan(
-                          text: state.weather.day + " / ",
-                          style: TextStyle(fontSize: 15, color: Colors.black)),
+                          text: state.weather.day + "\n",
+                          style: CustomTextTheme(context).display3),
                       TextSpan(
                           text: state.weather.description.capitalize(),
-                          style: TextStyle(fontSize: 15, color: Colors.black)),
+                          style: CustomTextTheme(context).display4),
                     ],
                   ),
                 );

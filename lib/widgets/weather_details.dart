@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
+import 'package:flutterweatherapp/utils/custom_text_theme.dart';
 import 'package:flutterweatherapp/widgets/weather_icons.dart';
 
 class WeatherDetails extends StatelessWidget {
@@ -26,14 +27,14 @@ class WeatherDetails extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text("En Yüksek"),
-                      Text(state.weather.max + "\u00B0")
+                      Text("En Yüksek", style: CustomTextTheme(context).display3),
+                      Text(state.weather.max + "\u00B0", style: CustomTextTheme(context).display4)
                     ],
                   ),
                   Column(
                     children: <Widget>[
-                      Text("En Düşük"),
-                      Text(state.weather.min + "\u00B0")
+                      Text("En Düşük", style: CustomTextTheme(context).display3),
+                      Text(state.weather.min + "\u00B0", style: CustomTextTheme(context).display4)
                     ],
                   ),
                 ],
@@ -42,15 +43,19 @@ class WeatherDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       WeatherIcons("nem"),
-                      Text(state.weather.humidity)
+                      VerticalDivider(width: 5),
+                      Text(state.weather.humidity, style: CustomTextTheme(context).display4)
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       WeatherIcons("gece"),
-                      Text(state.weather.night + "\u00B0")
+                      VerticalDivider(width: 7),
+                      Text(state.weather.night + "\u00B0", style: CustomTextTheme(context).display4)
                     ],
                   )
                 ],

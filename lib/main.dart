@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
                 final weathers = state.weather.result;
                 context.bloc<ThemeBloc>().add(GetTheme(weathers[0])); //start getting theme before navigate to listing screen
                 Navigator.of(context).pushReplacement(PresentScreen.route()); //avoid back button infinitive loading spinner so don't use push
-              }
+              } //TODO network problem
             },
           ),
         ],

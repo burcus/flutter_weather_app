@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
+import 'package:flutterweatherapp/utils/utils.dart';
 import 'package:flutterweatherapp/widgets/widgets.dart';
 
 class WeatherCards extends StatelessWidget {
@@ -11,6 +13,9 @@ class WeatherCards extends StatelessWidget {
         if (state is WeatherLoadSuccess) {
           return Expanded(
             child: Container(
+              decoration: BoxDecoration(
+                color: CustomColors().weatherCardsColor,
+              ),
               width: MediaQuery.of(context).size.width,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
