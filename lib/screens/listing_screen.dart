@@ -56,6 +56,10 @@ Widget cover(BuildContext context, String imagePath) {
                         .createShader(rect);
                   },
                   child: weatherThemeImage(context, imagePath)),
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.009,
+                child: SearchBar(),
+              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[

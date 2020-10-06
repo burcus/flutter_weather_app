@@ -1,29 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterweatherapp/blocs/blocs.dart';
-import 'package:flutterweatherapp/utils/utils.dart';
+import 'package:flutterweatherapp/widgets/input_text.dart';
 
-class WeatherSearchBar extends StatelessWidget {
+class SearchBar extends StatelessWidget {
+  Widget build(BuildContext context) => SearchBarContent();
+}
+
+class SearchBarContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.center,
-      child: Padding(
-        padding: EdgeInsets.only(bottom: 150),
-        child: FractionallySizedBox(
-          heightFactor: 0.08,
-          widthFactor: 0.6,
-          child: WSearchBarContent(),
-        ),
+    return Container(
+      //width: MediaQuery.of(context).size.width * 0.8,
+      width: MediaQuery.of(context).size.width * 0.98,
+      height: MediaQuery.of(context).size.height * 0.05,
+      decoration: BoxDecoration(
+        color: Colors.black54.withOpacity(0.2),
+        border: Border.all(width: 2, color: Colors.white.withOpacity(0.08)),
+        borderRadius: BorderRadius.all(Radius.circular(15)),
       ),
+      child: InputText(),
     );
   }
 }
 
-class WSearchBarContent extends StatelessWidget {
+/*
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: MediaQuery.of(context).size.height * 0.05,
       decoration: BoxDecoration(
         color: Colors.transparent,
         border: Border.all(width: 2),
@@ -47,4 +51,4 @@ class WSearchBarContent extends StatelessWidget {
       ),
     );
   }
-}
+ */
