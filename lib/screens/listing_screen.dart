@@ -69,12 +69,15 @@ Widget cover(BuildContext context, String imagePath) {
                       padding: EdgeInsets.all(30),
                       child: WeatherDetails(),
                     ),
-                  )
+                  ),
                 ],
+              ),
+              Positioned(
+                bottom: 0,
+                child: WeatherCards(),
               ),
             ],
           ),
-          WeatherCards(),
         ],
       ),
     ),
