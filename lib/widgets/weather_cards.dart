@@ -12,7 +12,7 @@ class WeatherCards extends StatelessWidget {
         if (state is WeatherLoadSuccess) {
           return Container(
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
+              color: Colors.black54.withOpacity(0.2),
             ),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.14,

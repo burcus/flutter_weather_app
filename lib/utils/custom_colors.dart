@@ -33,12 +33,15 @@ class CustomColors {
   Color cloudyGrayWithOpacity(double opacity) => _cloudyGray.withOpacity(opacity);
 
   //Icons
+
   Color _flashRain = Color(0xFF747e8c);
-  Color _cloudyGray = Color(0xFF9dc4cf);
+  Color _cloudyGray = Color(0xFF92d6f7);
   Color _humidity = Color(0xFFb4dfed);
   Color _moon = Color(0xFFdcedf2);
-  Color _sunCloud = Color(0xFFf1f7d7);
+  Color _sunCloud = Color(0xFFdae8ed);
+  Color _sunny = Color(0xFFfffa66);
 
+  Color get sunny => _sunny;
   Color get sunCloud => _sunCloud;
   Color get moon => _moon;
   Color get humidity => _humidity;

@@ -16,7 +16,7 @@ class WeatherIcons extends StatelessWidget {
   _mapDescriptionToIcon(String weatherDescription) {
     switch(weatherDescription) {
       case "açık":
-        return Icon(FontAwesome5.sun, size: 20, color: Colors.yellow);
+        return Icon(FontAwesome5.sun, size: 20, color: CustomColors().sunny);
       case "parçalı az bulutlu":
       case "parçalı bulutlu":
         return Icon(FontAwesome5.cloud_sun, size: 20, color: CustomColors().sunCloud);
