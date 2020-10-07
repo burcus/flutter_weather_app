@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/CustomBlocObserver.dart';
-import 'package:flutterweatherapp/widgets/loading_spinner.dart';
 import 'blocs/blocs.dart';
 import 'screens/screens.dart';
 
@@ -24,6 +23,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<ThemeBloc>(
           create: (context) => ThemeBloc(),
+        ),
+        BlocProvider<NetworkBloc>(
+          create: (context) => NetworkBloc()..add(GetConnectivity()),
         ),
       ],
       child: MaterialApp(
@@ -56,14 +58,16 @@ class HomePage extends StatelessWidget {
                 } //TODO network problem
               },
             ),
+            BlocListener<NetworkBloc, NetworkState>(
+              listener: (context, state) {
+                if(state is ConnectivitySuccess)
+                  print("connectivity: success");
+                if(state is ConnectivityFailed)
+                  print("connectivity: failed");
+              },
+            ),
           ],
           child: PresentScreen()),
-          //child: SearchScreen(),
-          /*
-          child: Center(
-            child: const LoadingSpinner(), //todo may remove
-          )),
-           */
     );
   }
 }

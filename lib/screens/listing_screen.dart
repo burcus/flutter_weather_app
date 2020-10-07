@@ -29,8 +29,6 @@ class _Present extends StatelessWidget {
 Widget cover(BuildContext context, String imagePath) {
   //TODO fix bottom overflow causes by keyboard
   return Scaffold(
-    resizeToAvoidBottomPadding: false,
-    //backgroundColor: CustomColors().scaffoldBg.withOpacity(0.7),
     body: SafeArea(
       top: true,
       bottom: true,
@@ -42,11 +40,14 @@ Widget cover(BuildContext context, String imagePath) {
               children: <Widget>[
                 ShaderMask(
                     shaderCallback: (rect) {
-                      return LinearGradient(colors: [
-                        CustomColors().softGray.withOpacity(0.9),
-                        CustomColors().softGray.withOpacity(0.8),
-                        //Colors.white.withOpacity(0.5),
-                      ], begin: Alignment.topCenter, end: Alignment.bottomCenter)
+                      return LinearGradient(
+                              colors: [
+                            CustomColors().softGray.withOpacity(0.9),
+                            CustomColors().softGray.withOpacity(0.8),
+                            //Colors.white.withOpacity(0.5),
+                          ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter)
                           .createShader(rect);
                     },
                     child: weatherThemeImage(context, imagePath)),
@@ -83,7 +84,7 @@ Widget cover(BuildContext context, String imagePath) {
                         ],
                       );
                     } else {
-                      return Text("text");
+                      return Empty();
                     }
                   },
                 ),
@@ -92,7 +93,7 @@ Widget cover(BuildContext context, String imagePath) {
                     if (state is WeatherLoadSuccess) {
                       return Positioned(bottom: 0, child: WeatherCards());
                     } else
-                      return Text("aq");
+                      return Empty();
                   },
                 )
                 //TODO navigate network error page
