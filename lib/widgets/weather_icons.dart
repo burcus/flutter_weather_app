@@ -26,7 +26,7 @@ class WeatherIcons extends StatelessWidget {
       case "hafif yağmur":
         return Icon(FontAwesome5.cloud_rain, size: 20, color: CustomColors().cloudyGray);
       case "orta şiddetli yağmur":
-        return Icon(FontAwesome5.cloud_showers_heavy, size: 20);
+        return Icon(FontAwesome5.cloud_showers_heavy, size: 20, color: CustomColors().flash);
       case "şiddetli yağmur":
         return Icon(Typicons.cloud_flash, size: 20, color: CustomColors().flashRain,);
       case "gece":

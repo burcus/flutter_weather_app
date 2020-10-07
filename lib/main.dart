@@ -17,9 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<LocalizationBloc>(
-          create: (context) =>
-          LocalizationBloc()
-            ..add(CheckPermission()),
+          create: (context) => LocalizationBloc()..add(CheckPermission()),
         ),
         BlocProvider<WeatherBloc>(
           create: (context) => WeatherBloc(),
@@ -40,32 +38,32 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: MultiBlocListener(
-        listeners: [
-          BlocListener<LocalizationBloc, LocalizationState>(
-            listener: (BuildContext context, state) {
-              if (state is Always)
-                context.bloc<LocalizationBloc>().add(GetLocation());
-              if (state is Denied || state is LocationFailed)
-                Navigator.of(context).pushReplacement(SearchScreen.route());
-              if (state is LocationSucceed)
-                context.bloc<WeatherBloc>().add(GetWeatherInfo(state.city));
-            },
-          ),
-          BlocListener<WeatherBloc, WeatherState>(
-            listener: (context, state) {
-              if (state is WeatherLoadSuccess) {
-                final weathers = state.weather.result;
-                context.bloc<ThemeBloc>().add(GetTheme(weathers[0])); //start getting theme before navigate to listing screen
-                Navigator.of(context).pushReplacement(PresentScreen.route()); //avoid back button infinitive loading spinner so don't use push
-              } //TODO network problem
-            },
-          ),
-        ],
-        child: Center(
-          child: const LoadingSpinner(), //todo may remove
-        ),
-      ),
+          listeners: [
+            BlocListener<LocalizationBloc, LocalizationState>(
+              listener: (BuildContext context, state) {
+                if (state is Always)
+                  context.bloc<LocalizationBloc>().add(GetLocation());
+                if (state is LocationSucceed)
+                  context.bloc<WeatherBloc>().add(GetWeatherInfo(state.city));
+              },
+            ),
+            BlocListener<WeatherBloc, WeatherState>(
+              listener: (context, state) {
+                if (state is WeatherLoadSuccess) {
+                  final weathers = state.weather.result;
+                  context.bloc<ThemeBloc>().add(GetTheme(weathers[0])); //start getting theme before navigate to listing screen
+                  //Navigator.of(context).pushReplacement(PresentScreen.route()); //avoid back button infinitive loading spinner so don't use push
+                } //TODO network problem
+              },
+            ),
+          ],
+          child: PresentScreen()),
+          //child: SearchScreen(),
+          /*
+          child: Center(
+            child: const LoadingSpinner(), //todo may remove
+          )),
+           */
     );
   }
 }
-

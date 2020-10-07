@@ -39,7 +39,7 @@ class WeatherCards extends StatelessWidget {
                 }),
           );
         } else
-          return Text("todo"); //todo fix this issue
+          return Text("to do"); //todo fix this issue
       },
     );
   }

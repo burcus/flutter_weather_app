@@ -25,5 +25,5 @@ class CustomTextTheme extends TextTheme {
    TextStyle get subtitle => GoogleFonts.ptSans(color: Colors.white54, fontWeight: FontWeight.w500, fontSize: (MediaQuery.of(this.context).size.width) * 0.03);
 
    @override
-  TextStyle get body1 => GoogleFonts.ptSans(color: Colors.white70, fontStyle: FontStyle.italic, fontWeight: FontWeight.w300, fontSize: (MediaQuery.of(this.context).size.width) * 0.035);
+  TextStyle get body1 => GoogleFonts.ptSans(color: Colors.white38, fontStyle: FontStyle.italic, fontWeight: FontWeight.w300, fontSize: (MediaQuery.of(this.context).size.width) * 0.035, decoration: TextDecoration.none);
 }

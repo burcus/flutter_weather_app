@@ -5,21 +5,13 @@ import 'package:flutterweatherapp/utils/custom_colors.dart';
 import 'package:flutterweatherapp/widgets/widgets.dart';
 
 class PresentScreen extends StatelessWidget {
-  const PresentScreen._();
-
   @override
   Widget build(BuildContext context) {
-    return const _Present();
+    return _Present();
   }
-
-  static Route route() => MaterialPageRoute(
-        builder: (_) => const PresentScreen._(),
-      );
 }
 
 class _Present extends StatelessWidget {
-  const _Present();
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeState>(
@@ -28,14 +20,14 @@ class _Present extends StatelessWidget {
         if (state is ThemeLoaded) {
           return cover(context, state.bgImage);
         } else
-          throw Exception("Theme state: unexpected");
+          return cover(context, "assets/images/default.jpg");
       },
     );
   }
 }
 
 Widget cover(BuildContext context, String imagePath) {
-  //TODO return LayoutBuilder();
+  //TODO fix bottom overflow causes by keyboard
   return Scaffold(
     //backgroundColor: CustomColors().scaffoldBg.withOpacity(0.7),
     body: SafeArea(
@@ -56,30 +48,52 @@ Widget cover(BuildContext context, String imagePath) {
                         .createShader(rect);
                   },
                   child: weatherThemeImage(context, imagePath)),
-              Positioned(
-                top: MediaQuery.of(context).size.height * 0.009,
-                child: SearchBar(),
+              BlocBuilder<WeatherBloc, WeatherState>(
+                builder: (context, state) {
+                  if (state is WeatherLoadSuccess) {
+                    return Positioned(
+                        top: MediaQuery.of(context).size.height * 0.009,
+                        child: SearchBar());
+                  } else {
+                    return Positioned(
+                        top: MediaQuery.of(context).size.height * 0.35,
+                        child: SearchBar());
+                  }
+                },
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Align(
-                    alignment: Alignment.center,
-                    child: ThemeDayChart(),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: EdgeInsets.all(30),
-                      child: WeatherDetails(),
-                    ),
-                  ),
-                ],
+              BlocBuilder<WeatherBloc, WeatherState>(
+                builder: (context, state) {
+                  if (state is WeatherLoadSuccess) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.center,
+                          child: ThemeDayChart(),
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Padding(
+                            padding: EdgeInsets.all(30),
+                            child: WeatherDetails(),
+                          ),
+                        ),
+                      ],
+                    );
+                  } else {
+                    return Text("text");
+                  }
+                },
               ),
-              Positioned(
-                bottom: 0,
-                child: WeatherCards(),
-              ),
+              BlocBuilder<WeatherBloc, WeatherState>(
+                builder: (context, state) {
+                  if (state is WeatherLoadSuccess) {
+                    return Positioned(bottom: 0, child: WeatherCards());
+                  } else
+                    return Text("aq");
+                },
+              )
+              //TODO navigate network error page
             ],
           ),
         ],

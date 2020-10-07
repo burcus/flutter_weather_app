@@ -40,6 +40,7 @@ class CustomColors {
   Color _moon = Color(0xFFdcedf2);
   Color _sunCloud = Color(0xFFdae8ed);
   Color _sunny = Color(0xFFfffa66);
+  Color _flash = Color(0xFF75516d);
 
   Color get sunny => _sunny;
   Color get sunCloud => _sunCloud;
@@ -47,6 +48,7 @@ class CustomColors {
   Color get humidity => _humidity;
   Color get flashRain => _flashRain; //Clear
   Color get cloudyGray => _cloudyGray;
+  Color get flash => _flash;
 
 
 
