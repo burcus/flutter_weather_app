@@ -29,74 +29,77 @@ class _Present extends StatelessWidget {
 Widget cover(BuildContext context, String imagePath) {
   //TODO fix bottom overflow causes by keyboard
   return Scaffold(
+    resizeToAvoidBottomPadding: false,
     //backgroundColor: CustomColors().scaffoldBg.withOpacity(0.7),
     body: SafeArea(
       top: true,
       bottom: true,
-      child: Column(
-        children: <Widget>[
-          Stack(
-            alignment: Alignment.center,
-            children: <Widget>[
-              ShaderMask(
-                  shaderCallback: (rect) {
-                    return LinearGradient(colors: [
-                      CustomColors().softGray.withOpacity(0.9),
-                      CustomColors().softGray.withOpacity(0.8),
-                      //Colors.white.withOpacity(0.5),
-                    ], begin: Alignment.topCenter, end: Alignment.bottomCenter)
-                        .createShader(rect);
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Stack(
+              alignment: Alignment.center,
+              children: <Widget>[
+                ShaderMask(
+                    shaderCallback: (rect) {
+                      return LinearGradient(colors: [
+                        CustomColors().softGray.withOpacity(0.9),
+                        CustomColors().softGray.withOpacity(0.8),
+                        //Colors.white.withOpacity(0.5),
+                      ], begin: Alignment.topCenter, end: Alignment.bottomCenter)
+                          .createShader(rect);
+                    },
+                    child: weatherThemeImage(context, imagePath)),
+                BlocBuilder<WeatherBloc, WeatherState>(
+                  builder: (context, state) {
+                    if (state is WeatherLoadSuccess) {
+                      return Positioned(
+                          top: MediaQuery.of(context).size.height * 0.009,
+                          child: SearchBar());
+                    } else {
+                      return Positioned(
+                          top: MediaQuery.of(context).size.height * 0.35,
+                          child: SearchBar());
+                    }
                   },
-                  child: weatherThemeImage(context, imagePath)),
-              BlocBuilder<WeatherBloc, WeatherState>(
-                builder: (context, state) {
-                  if (state is WeatherLoadSuccess) {
-                    return Positioned(
-                        top: MediaQuery.of(context).size.height * 0.009,
-                        child: SearchBar());
-                  } else {
-                    return Positioned(
-                        top: MediaQuery.of(context).size.height * 0.35,
-                        child: SearchBar());
-                  }
-                },
-              ),
-              BlocBuilder<WeatherBloc, WeatherState>(
-                builder: (context, state) {
-                  if (state is WeatherLoadSuccess) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Align(
-                          alignment: Alignment.center,
-                          child: ThemeDayChart(),
-                        ),
-                        Align(
-                          alignment: Alignment.center,
-                          child: Padding(
-                            padding: EdgeInsets.all(30),
-                            child: WeatherDetails(),
+                ),
+                BlocBuilder<WeatherBloc, WeatherState>(
+                  builder: (context, state) {
+                    if (state is WeatherLoadSuccess) {
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Align(
+                            alignment: Alignment.center,
+                            child: ThemeDayChart(),
                           ),
-                        ),
-                      ],
-                    );
-                  } else {
-                    return Text("text");
-                  }
-                },
-              ),
-              BlocBuilder<WeatherBloc, WeatherState>(
-                builder: (context, state) {
-                  if (state is WeatherLoadSuccess) {
-                    return Positioned(bottom: 0, child: WeatherCards());
-                  } else
-                    return Text("aq");
-                },
-              )
-              //TODO navigate network error page
-            ],
-          ),
-        ],
+                          Align(
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: EdgeInsets.all(30),
+                              child: WeatherDetails(),
+                            ),
+                          ),
+                        ],
+                      );
+                    } else {
+                      return Text("text");
+                    }
+                  },
+                ),
+                BlocBuilder<WeatherBloc, WeatherState>(
+                  builder: (context, state) {
+                    if (state is WeatherLoadSuccess) {
+                      return Positioned(bottom: 0, child: WeatherCards());
+                    } else
+                      return Text("aq");
+                  },
+                )
+                //TODO navigate network error page
+              ],
+            ),
+          ],
+        ),
       ),
     ),
   );
