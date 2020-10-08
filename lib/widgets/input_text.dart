@@ -17,18 +17,45 @@ class _InputTextState extends State<InputText> {
     super.initState();
     _textController.addListener(() {});
     _focusNode.addListener(() {
-      if (_focusNode.hasFocus) {
-        print("odaklı");
-        setState(() { _hintText = "";});
-      }
-      //else setState(() => _hintText = "İstanbul, Ankara...");
-      if (!_focusNode.hasFocus) {
-        print("odaklı değil");
-        setState(() {_hintText = "İstanbul, Ankara...";});
-      }
-    }); //TODO remove hint text when cursor on it
+      if (_focusNode.hasFocus) setState(() => _hintText = "");
+      if (!_focusNode.hasFocus)
+        setState(() => _hintText = "İstanbul, Ankara...");
+    });
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: TextField(
+        autofocus: false,
+        focusNode: _focusNode,
+        controller: _textController,
+        cursorColor: Colors.white70,
+        style: CustomTextTheme(context).body1,
+        textAlign: TextAlign.start,
+        textInputAction: TextInputAction.search,
+        onSubmitted: (param) {
+          context.bloc<WeatherBloc>().add(GetWeatherInfo(param));
+          _textController.clear();
+        },
+        decoration: InputDecoration(
+            border: InputBorder.none,
+            hintText: _hintText,
+            hintStyle: CustomTextTheme(context).body1,
+            contentPadding:
+                EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
+            suffixIcon: Icon(
+              Icons.search,
+              color: Colors.white70,
+            )),
+      ),
+    );
+  }
+}
+
+/*
+class _InputTextContent extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,3 +89,4 @@ class _InputTextState extends State<InputText> {
     );
   }
 }
+*/

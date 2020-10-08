@@ -5,6 +5,24 @@ import 'package:flutterweatherapp/utils/custom_colors.dart';
 import 'package:flutterweatherapp/widgets/widgets.dart';
 
 class PresentScreen extends StatelessWidget {
+  /*
+    const SearchScreen._();
+
+  // you can add here blocs or providers you need for this screen only
+  // that is why we keep this widget separated from the actual UI which is in _Search
+  @override
+  Widget build(BuildContext context) {
+    return const _Search();
+  }
+
+  static Route route() => MaterialPageRoute(
+        builder: (_) => const SearchScreen._(),
+      );
+}
+
+class _Search extends StatelessWidget {
+  const _Search({Key key}) : super(key: key);
+   */
   @override
   Widget build(BuildContext context) {
     return _Present();
@@ -83,9 +101,11 @@ Widget cover(BuildContext context, String imagePath) {
                           ),
                         ],
                       );
-                    } else {
+                    } else if (state is InitialState)
                       return Empty();
-                    }
+                    else
+                      context.bloc<NetworkBloc>().add(ListenConnectivity());
+                      return Error();
                   },
                 ),
                 BlocBuilder<WeatherBloc, WeatherState>(

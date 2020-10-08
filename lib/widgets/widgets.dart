@@ -8,3 +8,4 @@ export 'weather_icons.dart';
 export 'weather_details.dart';
 export 'search_bar.dart';
 export 'empty.dart';
+export 'error.dart';

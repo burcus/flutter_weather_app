@@ -7,10 +7,20 @@ class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
 
   @override
   Stream<NetworkState> mapEventToState(NetworkEvent event) async* {
+    /*
     if (event is GetConnectivity) {
       var connectivity = await (Connectivity().checkConnectivity());
       if(connectivity == ConnectivityResult.mobile || connectivity == ConnectivityResult.wifi) yield ConnectivitySuccess();
       else yield ConnectivityFailed();
+     }
+     */
+
+    if (event is ListenConnectivity){
+      Connectivity().onConnectivityChanged.listen((connectivity) async* {
+        print(connectivity);
+        if(connectivity == ConnectivityResult.mobile || connectivity == ConnectivityResult.wifi) yield ConnectivitySuccess();
+        else yield ConnectivityFailed();
+      });
     }
   }
 }

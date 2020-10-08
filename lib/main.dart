@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           create: (context) => ThemeBloc(),
         ),
         BlocProvider<NetworkBloc>(
-          create: (context) => NetworkBloc()..add(GetConnectivity()),
+          create: (context) => NetworkBloc(),
         ),
       ],
       child: MaterialApp(
@@ -56,14 +56,6 @@ class HomePage extends StatelessWidget {
                   context.bloc<ThemeBloc>().add(GetTheme(weathers[0])); //start getting theme before navigate to listing screen
                   //Navigator.of(context).pushReplacement(PresentScreen.route()); //avoid back button infinitive loading spinner so don't use push
                 } //TODO network problem
-              },
-            ),
-            BlocListener<NetworkBloc, NetworkState>(
-              listener: (context, state) {
-                if(state is ConnectivitySuccess)
-                  print("connectivity: success");
-                if(state is ConnectivityFailed)
-                  print("connectivity: failed");
               },
             ),
           ],
