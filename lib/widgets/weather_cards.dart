@@ -39,35 +39,8 @@ class WeatherCards extends StatelessWidget {
                 }),
           );
         } else
-          return Text("to do"); //todo fix this issue
+          return Empty(); //todo fix this issue
       },
     );
   }
 }
-
-/*
-          return Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: CustomColors().weatherCardsColor,
-              ),
-              width: MediaQuery.of(context).size.width,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: state.weather.result.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return new GestureDetector(
-                      onTap: (){
-                        print("Tıklanan description: " + state.weather.result[index].description + " " + state.weather.result[index].degree);
-                        print(state.weather.result[index].description);
-                        context.bloc<ThemeBloc>().add(GetTheme(state.weather.result[index]));
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.all(10),
-                        child: weatherCard(state.weather.result[index]),
-                      ),
-                    );
-                  }),
-            ),
-          );
- */

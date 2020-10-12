@@ -33,6 +33,7 @@ dependencies:
   fluttericon: ^1.0.7
   google_fonts: ^1.1.0
   connectivity: ^0.4.9+3
+  flutter_svg: 0.17.4
 
 dev_dependencies:
   flutter_test:
