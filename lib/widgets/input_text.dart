@@ -37,6 +37,7 @@ class _InputTextState extends State<InputText> {
         textInputAction: TextInputAction.search,
         onSubmitted: (param) {
           context.bloc<WeatherBloc>().add(GetWeatherInfo(param));
+          context.bloc<NetworkBloc>().add(GetConnectivity());
           _textController.clear();
         },
         decoration: InputDecoration(
