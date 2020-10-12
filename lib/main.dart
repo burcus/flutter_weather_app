@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           create: (context) => ThemeBloc(),
         ),
         BlocProvider<NetworkBloc>(
-          create: (context) => NetworkBloc(),
+          create: (context) => NetworkBloc()..add(GetConnectivity()),
         ),
       ],
       child: MaterialApp(

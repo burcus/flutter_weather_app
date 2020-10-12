@@ -59,13 +59,13 @@ Widget cover(BuildContext context, String imagePath) {
                 ShaderMask(
                     shaderCallback: (rect) {
                       return LinearGradient(
-                              colors: [
+                          colors: [
                             CustomColors().softGray.withOpacity(0.9),
                             CustomColors().softGray.withOpacity(0.8),
                             //Colors.white.withOpacity(0.5),
                           ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter)
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter)
                           .createShader(rect);
                     },
                     child: weatherThemeImage(context, imagePath)),
@@ -73,11 +73,17 @@ Widget cover(BuildContext context, String imagePath) {
                   builder: (context, state) {
                     if (state is WeatherLoadSuccess) {
                       return Positioned(
-                          top: MediaQuery.of(context).size.height * 0.009,
+                          top: MediaQuery
+                              .of(context)
+                              .size
+                              .height * 0.009,
                           child: SearchBar());
                     } else {
                       return Positioned(
-                          top: MediaQuery.of(context).size.height * 0.35,
+                          top: MediaQuery
+                              .of(context)
+                              .size
+                              .height * 0.35,
                           child: SearchBar());
                     }
                   },
@@ -104,7 +110,6 @@ Widget cover(BuildContext context, String imagePath) {
                     } else if (state is InitialState)
                       return Empty();
                     else
-                      context.bloc<NetworkBloc>().add(ListenConnectivity());
                       return Error();
                   },
                 ),
