@@ -6,6 +6,8 @@ import 'package:connectivity/connectivity.dart';
 class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
   NetworkBloc() : super(ConnectivityInitialState());
 
+  StreamSubscription _subscription;
+
   @override
   Stream<NetworkState> mapEventToState(NetworkEvent event) async* {
     if (event is GetConnectivity) {
@@ -16,16 +18,21 @@ class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
       else
         yield ConnectivityFailed();
 
-      //Connectivity().onConnectivityChanged.listen(statusListener);
+      _subscription = Connectivity().onConnectivityChanged.listen(
+          (ConnectivityResult result) => add(UpdateConnectivity(
+              result == ConnectivityResult.none
+                  ? ConnectivityFailed()
+                  : ConnectivitySuccess())));
     }
 
-    if (event is UpdateConnectivity) yield event.connectivity;
+    if (event is UpdateConnectivity) {
+      yield event.connectivity;
+    }
   }
 
-  statusListener(ConnectivityResult connectivity) {
-    if (connectivity == ConnectivityResult.wifi)
-      NetworkBloc().add(UpdateConnectivity(ConnectivitySuccess()));
-    if (connectivity == ConnectivityResult.none)
-      NetworkBloc().add(UpdateConnectivity(ConnectivityFailed()));
+  @override
+  Future<void> close() {
+    _subscription?.cancel();
+    return super.close();
   }
 }
