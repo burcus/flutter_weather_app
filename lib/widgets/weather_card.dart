@@ -19,7 +19,6 @@ class weatherCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Text(weather.day, style: CustomTextTheme(context).title),
-            Image.network(weather.icon),
             //WeatherIcons(weather.description),
             SvgPicture.network(weather.icon, height: 20, placeholderBuilder: (context) => WeatherIcons(weather.description), semanticsLabel: "weather",),
             Text(weather.degree + "\u00B0", style: CustomTextTheme(context).subtitle),

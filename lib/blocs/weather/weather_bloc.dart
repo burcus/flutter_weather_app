@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/models/models.dart';
+import 'package:flutterweatherapp/repositories/weather_repository.dart';
 import 'weather.dart';
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
@@ -8,7 +9,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   @override
   Stream<WeatherState> mapEventToState(WeatherEvent event) async* {
     if (event is GetWeatherInfo) {
-      final res = await WeatherRequest().fetchWeathers(event.cityName);
+      final res = await WeatherRepository.fetchWeathers(event.cityName);
       if(res!= null && res.success) yield WeatherLoadSuccess(res);
       else yield WeatherLoadFailed();
     }
