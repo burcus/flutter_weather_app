@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
 import 'package:connectivity/connectivity.dart';
@@ -10,12 +11,26 @@ class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
 
   @override
   Stream<NetworkState> mapEventToState(NetworkEvent event) async* {
-    if (event is GetConnectivity) {
+    if (event is ListenConnectivity) {
+      var _isConnected = false;
+      _isConnected = await DataConnectionChecker().hasConnection;
 
-      var connectivity = await (Connectivity().checkConnectivity()); //TODO remove here
-      if (connectivity == ConnectivityResult.mobile ||
-          connectivity == ConnectivityResult.wifi)
+      if (_isConnected)
         yield ConnectivitySuccess();
+      else
+        ConnectivityFailed();
+
+      _subscription = DataConnectionChecker().onStatusChange.listen((status) {
+        add(UpdateConnectivity(status == DataConnectionStatus.connected
+            ? ConnectivitySuccess()
+            : ConnectivityFailed()));
+      });
+
+      /*
+      var connectivity = await (Connectivity().checkConnectivity());
+      if (connectivity == ConnectivityResult.mobile || connectivity == ConnectivityResult.wifi){
+        yield ConnectivitySuccess();
+      }
       else
         yield ConnectivityFailed();
 
@@ -24,6 +39,7 @@ class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
               result == ConnectivityResult.none
                   ? ConnectivityFailed()
                   : ConnectivitySuccess())));
+       */
     }
 
     if (event is UpdateConnectivity) {
