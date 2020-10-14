@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
 import 'package:flutterweatherapp/utils/utils.dart';
-import 'package:flutterweatherapp/repositories/repositories.dart';
-
 
 class InputText extends StatefulWidget {
   @override
@@ -45,7 +43,6 @@ class _InputTextState extends State<InputText> {
         textInputAction: TextInputAction.search,
         onSubmitted: (param) {
           context.bloc<WeatherBloc>().add(GetWeatherInfo(param));
-//          context.bloc<NetworkBloc>().add(GetConnectivity());
           _textController.clear();
         },
         decoration: InputDecoration(
