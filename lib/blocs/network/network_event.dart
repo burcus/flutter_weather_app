@@ -1,11 +1,13 @@
-import 'network_state.dart';
+import 'package:data_connection_checker/data_connection_checker.dart';
 
-abstract class NetworkEvent {}
+abstract class NetworkEvent {
+  const NetworkEvent();
+}
 
 class ListenConnectivity extends NetworkEvent {}
 
-class UpdateConnectivity extends NetworkEvent {
-  NetworkState connectivity;
+class ConnectivityChanged extends NetworkEvent {
+  const ConnectivityChanged(this.status);
 
-  UpdateConnectivity(this.connectivity);
+  final DataConnectionStatus status;
 }
