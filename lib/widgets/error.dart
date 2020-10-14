@@ -8,12 +8,16 @@ class Error extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NetworkBloc, NetworkState>(
       builder: (context, state) {
-        if (state is ConnectivityFailed)
-          return Text("wifi problem");
-        else if (state is ConnectivitySuccess)
-          return Text("location problem");
-        else
-          return Empty(); //TODO animated
+        return AnimatedSwitcher(
+          duration: const Duration(milliseconds: 500),
+          child: () {
+            if (state is ConnectivityFailed) return Text("wifi problem");
+            if (state is ConnectivitySuccess) return Text("location problem");
+            if (state is ConnectivityResumed)
+              return Text('welcome back online');
+            return Empty(); //TODO animated
+          }(),
+        );
       },
     );
   }
