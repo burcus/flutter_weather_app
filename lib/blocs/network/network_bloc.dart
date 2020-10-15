@@ -19,7 +19,7 @@ class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
 
   @override
   Stream<NetworkState> mapEventToState(NetworkEvent event) async* {
-    final _state = state;
+    final _state = state; //current state in other words transitions first state
     if (event is ListenConnectivity) {
       _watchConnectivityStatus();
       return;
@@ -38,6 +38,13 @@ class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
       }
       yield ConnectivitySuccess();
       return;
+    }
+
+    if(event is UpdateConnectivityState) {
+      var connection = await DataConnectionChecker().hasConnection;
+      if(connection)
+        yield ConnectivitySuccess();
+      ConnectivityFailed();
     }
   }
 

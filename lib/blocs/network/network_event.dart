@@ -11,3 +11,5 @@ class ConnectivityChanged extends NetworkEvent {
 
   final DataConnectionStatus status;
 }
+
+class UpdateConnectivityState extends NetworkEvent {}
