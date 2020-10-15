@@ -11,7 +11,7 @@ class InputText extends StatefulWidget {
 class _InputTextState extends State<InputText> {
   final _textController = TextEditingController();
   final _focusNode = FocusNode();
-  String _hintText = "İstanbul, Ankara...";
+  String _hintText = "Samsun, Brugge...";
 
   void initState() {
     super.initState();
@@ -19,7 +19,7 @@ class _InputTextState extends State<InputText> {
     _focusNode.addListener(() {
       if (_focusNode.hasFocus) setState(() => _hintText = "");
       if (!_focusNode.hasFocus)
-        setState(() => _hintText = "İstanbul, Ankara...");
+        setState(() => _hintText = "Samsun, Brugge...");
     });
   }
 
@@ -43,6 +43,7 @@ class _InputTextState extends State<InputText> {
         textInputAction: TextInputAction.search,
         onSubmitted: (param) {
           context.bloc<WeatherBloc>().add(GetWeatherInfo(param));
+          context.bloc<NetworkBloc>().add(UpdateConnectivityState()); //avoid shows welcome back when network is reconnected but no place
           _textController.clear();
         },
         decoration: InputDecoration(
