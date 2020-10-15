@@ -6,25 +6,25 @@ class CustomTextTheme extends TextTheme{
    CustomTextTheme(this.context);
 
    @override
-   TextStyle get display1 => GoogleFonts.ptSans(color: Colors.white, fontWeight: FontWeight.w500, shadows: [Shadow(blurRadius: 3, color: Colors.white54, offset: Offset(1.0, 1.0))], fontSize: (MediaQuery.of(this.context).size.width) * 0.175);
+   TextStyle get display1 => GoogleFonts.ptSans(color: Colors.white, fontWeight: FontWeight.w500, shadows: [Shadow(blurRadius: 3, color: Colors.white54, offset: Offset(1.0, 1.0))], fontSize: 63);
 
    @override
-   TextStyle get display2 => GoogleFonts.ptSans(color: Colors.white70, fontWeight: FontWeight.w500, fontSize: (MediaQuery.of(this.context).size.width) * 0.055);
+   TextStyle get display2 => GoogleFonts.ptSans(color: Colors.white70, fontWeight: FontWeight.w500, fontSize: 20);
 
    @override
-   TextStyle get display3 => GoogleFonts.ptSans(color: Colors.white70, fontWeight: FontWeight.w500, fontSize: (MediaQuery.of(this.context).size.width) * 0.04);
+   TextStyle get display3 => GoogleFonts.ptSans(color: Colors.white70, fontWeight: FontWeight.w500, fontSize: 15);
 
    @override
-   TextStyle get display4 => GoogleFonts.ptSans(color: Colors.white70, fontWeight: FontWeight.w500, fontSize: (MediaQuery.of(this.context).size.width) * 0.035);
+   TextStyle get display4 => GoogleFonts.ptSans(color: Colors.white70, fontWeight: FontWeight.w500, fontSize: 13);
 
    @override
-   TextStyle get title => GoogleFonts.ptSans(color: Colors.white54, fontWeight: FontWeight.w500, fontSize: (MediaQuery.of(this.context).size.width) * 0.032);
+   TextStyle get title => GoogleFonts.ptSans(color: Colors.white54, fontWeight: FontWeight.w500, fontSize: 11.5);
 
    @override
-   TextStyle get subtitle => GoogleFonts.ptSans(color: Colors.white54, fontWeight: FontWeight.w500, fontSize: (MediaQuery.of(this.context).size.width) * 0.03);
+   TextStyle get subtitle => GoogleFonts.ptSans(color: Colors.white54, fontWeight: FontWeight.w500, fontSize: 11);
 
    @override
-  TextStyle get body1 => GoogleFonts.ptSans(color: Colors.white38, fontStyle: FontStyle.italic, fontWeight: FontWeight.w300, fontSize: (MediaQuery.of(this.context).size.width) * 0.04, decoration: TextDecoration.none);
+  TextStyle get body1 => GoogleFonts.ptSans(color: Colors.white38, fontStyle: FontStyle.italic, fontWeight: FontWeight.w300, fontSize: 15, decoration: TextDecoration.none);
 
-   TextStyle get warning => GoogleFonts.ptSans(color: Colors.white30, fontStyle: FontStyle.italic, fontWeight: FontWeight.w400, fontSize: (MediaQuery.of(this.context).size.width) * 0.04);
+   TextStyle get warning => GoogleFonts.ptSans(color: Colors.white30, fontStyle: FontStyle.italic, fontWeight: FontWeight.w400, fontSize: 15);
 }
