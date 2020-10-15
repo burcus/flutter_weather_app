@@ -23,7 +23,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  carousel_slider: ^2.3.1
   connectivity: ^0.4.9+3
   cupertino_icons: ^0.1.3
   data_connection_checker: ^0.3.4
@@ -35,6 +34,7 @@ dependencies:
   geolocator: ^6.0.0+4
   google_fonts: ^1.1.0
   http: ^0.12.2
+  flare_flutter: ^2.0.6
 
 dev_dependencies:
   flutter_test:
@@ -43,7 +43,7 @@ dev_dependencies:
 flutter_icons:
   android: 'launcher_icon'
   ios: true
-  image_path: 'assets/images/logo.PNG'
+  image_path: 'assets/images/logo_alternate.png'
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -55,9 +55,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/bg_colors/ohhappiness.jpg
-    - assets/images/bg_colors/Sulphur.jpg
-    - assets/images/splash_gif.gif
     - assets/images/weather_status/clear.jpg
     - assets/images/weather_status/overcast.jpg
     - assets/images/weather_status/cloud.jpg
