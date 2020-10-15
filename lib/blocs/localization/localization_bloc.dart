@@ -16,27 +16,12 @@ class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
     } else if (event is RequestPermission) {
       LocationPermission permission = await requestPermission();
       yield getStateClass(permission);
-      /*
-      switch (permission){
-        case LocationPermission.always:
-          yield Always();
-          break;
-        case LocationPermission.denied:
-          yield Denied();
-          break;
-        case LocationPermission.deniedForever:
-          yield DeniedForever();
-          break;
-        case LocationPermission.whileInUse:
-          yield WhileInUse();
-      }
-       */
+
     } else if (event is GetLocation) {
       Position position =
           await getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
               .catchError((error) => print(error))
               .catchError((error) => print(error));
-      //Position lastKnown = await getLastKnownPosition();
       if (position == null ||
           (position.latitude == 0.0 && position.longitude == 0.0))
         position =

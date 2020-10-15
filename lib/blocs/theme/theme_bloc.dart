@@ -10,8 +10,6 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   Stream<ThemeState> mapEventToState(ThemeEvent event) async* {
     if(event is GetTheme) {
       String image;
-      Color primaryColor, imageFilterColor;
-      ThemeLoaded theme;
       switch(event.weather.description) {
         case "kapalı":
           image = "overcast";
@@ -31,7 +29,6 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
           break;
         case "parçalı bulutlu":
           image = "cloud";
-          primaryColor = CustomColors().cloudyGray;
           break;
         case "şiddetli yağmur":
           image = "thunder";

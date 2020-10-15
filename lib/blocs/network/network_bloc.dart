@@ -39,35 +39,6 @@ class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
       yield ConnectivitySuccess();
       return;
     }
-
-    // if (event is ListenConnectivity) {
-    //   var _isConnected = false;
-    //   _isConnected = await DataConnectionChecker().hasConnection;
-
-    //   if (_isConnected)
-    //     yield ConnectivitySuccess();
-    //   else
-    //     ConnectivityFailed();
-
-    //   /*
-    //   var connectivity = await (Connectivity().checkConnectivity());
-    //   if (connectivity == ConnectivityResult.mobile || connectivity == ConnectivityResult.wifi){
-    //     yield ConnectivitySuccess();
-    //   }
-    //   else
-    //     yield ConnectivityFailed();
-
-    //   _subscription = Connectivity().onConnectivityChanged.listen(
-    //       (ConnectivityResult result) => add(UpdateConnectivity(
-    //           result == ConnectivityResult.none
-    //               ? ConnectivityFailed()
-    //               : ConnectivitySuccess())));
-    //    */
-    // }
-
-    // if (event is ConnectivityChanged) {
-    //   yield event.status;
-    // }
   }
 
   @override

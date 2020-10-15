@@ -29,13 +29,4 @@ class Weather {
       humidity: json['humidity'] as String,
     );
   }
-
-/*
-  String city;
-  String town;
-  int celsius;
-  int fahrenheit;
-  Weather(this.city, this.town, this.celsius);
-  Weather.detailed(this.city, this.town, this.celsius, this.fahrenheit);
-   */
 }

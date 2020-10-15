@@ -1,5 +1,3 @@
-import 'package:geolocator/geolocator.dart';
-
 abstract class LocalizationState {}
 
 class LocationInitialState extends LocalizationState{}

@@ -29,7 +29,7 @@ dependencies:
   data_connection_checker: ^0.3.4
   flutter_bloc: ^6.0.3
   flutter_launcher_icons: ^0.7.5
-  flutter_svg: ^0.19.0
+  flutter_svg: 0.17.4
   fluttericon: ^1.0.7
   geocoder: ^0.2.1
   geolocator: ^6.0.0+4

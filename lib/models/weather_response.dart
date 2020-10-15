@@ -4,7 +4,6 @@ class WeatherResponse {
   bool success;
   String city;
 
-  //List<Weather> result;
   List<dynamic> result;
 
   WeatherResponse({this.success, this.city, this.result});
@@ -21,7 +20,6 @@ class WeatherResponse {
         success: json['success'] as bool,
         city: json['city'] as String,
         result: weatherList
-      //result: json['result'] as List<dynamic>
     );
   }
 }
