@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
 import 'package:flutterweatherapp/utils/custom_text_theme.dart';
+import 'package:flutterweatherapp/utils/utils.dart';
 import 'package:flutterweatherapp/widgets/weather_icons.dart';
 
 class WeatherDetails extends StatelessWidget {
@@ -27,13 +28,13 @@ class WeatherDetails extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text("En Yüksek", style: CustomTextTheme(context).display3),
+                      Text(Strings.higherDegree, style: CustomTextTheme(context).display3),
                       Text(state.weather.max + "\u00B0", style: CustomTextTheme(context).display4)
                     ],
                   ),
                   Column(
                     children: <Widget>[
-                      Text("En Düşük", style: CustomTextTheme(context).display3),
+                      Text(Strings.lowerDegree, style: CustomTextTheme(context).display3),
                       Text(state.weather.min + "\u00B0", style: CustomTextTheme(context).display4)
                     ],
                   ),

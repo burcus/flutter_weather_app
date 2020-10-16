@@ -11,7 +11,7 @@ class InputText extends StatefulWidget {
 class _InputTextState extends State<InputText> {
   final _textController = TextEditingController();
   final _focusNode = FocusNode();
-  String _hintText = "Samsun, Brugge...";
+  String _hintText = Strings.searchBarHint;
 
   void initState() {
     super.initState();
@@ -19,7 +19,7 @@ class _InputTextState extends State<InputText> {
     _focusNode.addListener(() {
       if (_focusNode.hasFocus) setState(() => _hintText = "");
       if (!_focusNode.hasFocus)
-        setState(() => _hintText = "Samsun, Brugge...");
+        setState(() => _hintText = Strings.searchBarHint);
     });
   }
 

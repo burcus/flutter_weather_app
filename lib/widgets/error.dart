@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
+import 'package:flutterweatherapp/utils/utils.dart';
 import 'package:flutterweatherapp/widgets/message_container.dart';
 import 'package:flutterweatherapp/widgets/widgets.dart';
 
@@ -13,11 +14,11 @@ class Error extends StatelessWidget {
           duration: const Duration(milliseconds: 1000),
           child: () {
             if (state is ConnectivityFailed)
-              return MessageContainer("Bir internet bağlantın olduğuna emin misin?");
+              return MessageContainer(Strings.networkFailureText);
             if (state is ConnectivitySuccess)
-              return MessageContainer("Böyle bir yer olduğuna emin misin?");
+              return MessageContainer(Strings.locationFailureText);
             if (state is ConnectivityResumed)
-              return MessageContainer("İşte tekrar bağlandın! Aramaya devam et.");
+              return MessageContainer(Strings.networkBackText);
             return Empty(); //TODO animated
           }(),
         );

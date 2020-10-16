@@ -29,7 +29,7 @@ class ThemeDayChart extends StatelessWidget {
                         text: state.weather.city.toUpperCase(),
                         style: CustomTextTheme(context).display2)); //TODO make fontsize responsive
               } else
-                throw Exception("Weather cityName: unexcepted");
+                throw Exception(Strings.weatherException);
             },
           ),
           Spacer(flex: 1,),
@@ -53,7 +53,7 @@ class ThemeDayChart extends StatelessWidget {
                   ),
                 );
               } else
-                throw Exception("Theme state: unexpected");
+                throw Exception(Strings.themeException);
             },
           ),
         ],
