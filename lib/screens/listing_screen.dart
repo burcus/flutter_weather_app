@@ -42,8 +42,8 @@ Widget cover(BuildContext context, String imagePath) {
                     shaderCallback: (rect) {
                       return LinearGradient(
                               colors: [
-                            CustomColors().softGray.withOpacity(0.9),
-                            CustomColors().softGray.withOpacity(0.8),
+                            CustomColors.softGray.withOpacity(0.9),
+                            CustomColors.softGray.withOpacity(0.8),
                             //Colors.white.withOpacity(0.5),
                           ],
                               begin: Alignment.topCenter,
