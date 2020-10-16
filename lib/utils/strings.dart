@@ -1,5 +1,5 @@
 class Strings {
-  static const searchBarHint = "Samsun, Brugge";
+  static const searchBarHint = "Samsun, Brugge...";
   static const networkFailureText = "Bir internet bağlantın olduğuna emin misin?";
   static const locationFailureText = "Böyle bir yer olduğuna emin misin?";
   static const networkBackText = "İşte tekrar bağlandın! Aramaya devam et.";
