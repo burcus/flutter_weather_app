@@ -69,19 +69,3 @@ class WeatherDetails extends StatelessWidget {
     });
   }
 }
-
-/*
-Row(
-      children: <Widget>[
-        Column(
-          children: <Widget>[],
-        ),
-        Column(
-          children: <Widget>[],
-        ),
-        Column(
-          children: <Widget>[],
-        )
-      ],
-    );
- */
