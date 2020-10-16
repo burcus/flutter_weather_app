@@ -46,7 +46,6 @@ class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
   }
 
   LocalizationState getStateClass(LocationPermission permission) {
-    //print("PERMISSION:  " + permission.toString());
     switch (permission) {
       case LocationPermission.always:
         return Always();

@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterweatherapp/utils/custom_colors.dart';
 import 'theme.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
