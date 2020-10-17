@@ -51,7 +51,7 @@ class _InputTextState extends State<InputText> {
             hintText: _hintText,
             hintStyle: CustomTextTheme(context).body1,
             contentPadding:
-                EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
+                EdgeInsets.only(left: SizeConfig.widthMultiplier * 5),
             suffixIcon: Icon(
               Icons.search,
               color: Colors.white70,

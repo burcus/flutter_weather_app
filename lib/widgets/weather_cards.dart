@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterweatherapp/blocs/blocs.dart';
+import 'package:flutterweatherapp/utils/size_config.dart';
 import 'package:flutterweatherapp/widgets/widgets.dart';
 
 class WeatherCards extends StatelessWidget {
@@ -14,8 +15,8 @@ class WeatherCards extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.black54.withOpacity(0.2),
             ),
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.14,
+            width: SizeConfig.widthMultiplier * 100,
+            height: SizeConfig.heightMultiplier * 15,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: state.weather.result.length,
@@ -27,8 +28,9 @@ class WeatherCards extends StatelessWidget {
                           .add(GetTheme(state.weather.result[index]));
                     },
                     child: Padding(
-                      padding: EdgeInsets.all(10),
-                      child: weatherCard(state.weather.result[index]),
+                      padding: EdgeInsets.all(SizeConfig.heightMultiplier * 2), //TODO
+                      //TODO
+                      child: WeatherCard(state.weather.result[index]),
                     ),
                   );
                 }),

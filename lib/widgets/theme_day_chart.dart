@@ -9,14 +9,14 @@ class ThemeDayChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      /*
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-        border: Border.all(width: 2),
-      ),
-       */
-      width: MediaQuery.of(context).size.width / 2,
-      height: MediaQuery.of(context).size.height / 3,
+//      decoration: BoxDecoration(
+//        color: Colors.transparent,
+//        border: Border.all(width: 2),
+//      ),
+//      width: MediaQuery.of(context).size.width / 2,
+      width: SizeConfig.widthMultiplier * 50,
+//      height: MediaQuery.of(context).size.height / 3,
+      height: SizeConfig.heightMultiplier * 35,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
