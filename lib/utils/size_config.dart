@@ -14,6 +14,8 @@ class SizeConfig {
   static double imageSizeMultiplier;
   static double heightMultiplier;
   static double widthMultiplier;
+  static double cardContainerWidth;
+
 
   void init(BuildContext context, Orientation orientation) {
     _safeAreaPadding = MediaQuery.of(context).padding;
@@ -32,5 +34,7 @@ class SizeConfig {
     imageSizeMultiplier = _blockWidth;
     heightMultiplier = _blockHeight;
     widthMultiplier = _blockWidth;
+
+    cardContainerWidth = orientation == Orientation.landscape ?  widthMultiplier * 40 : widthMultiplier * 100;
   }
 }

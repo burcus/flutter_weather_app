@@ -12,10 +12,7 @@ class WeatherCards extends StatelessWidget {
       builder: (context, state) {
         if (state is WeatherLoadSuccess) {
           return Container(
-            decoration: BoxDecoration(
-              color: Colors.black54.withOpacity(0.2),
-            ),
-            width: SizeConfig.widthMultiplier * 100,
+            width: SizeConfig.cardContainerWidth,
             height: SizeConfig.heightMultiplier * 15,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -28,15 +25,14 @@ class WeatherCards extends StatelessWidget {
                           .add(GetTheme(state.weather.result[index]));
                     },
                     child: Padding(
-                      padding: EdgeInsets.all(SizeConfig.heightMultiplier * 2), //TODO
-                      //TODO
+                      padding: EdgeInsets.all(SizeConfig.heightMultiplier * 2),
                       child: WeatherCard(state.weather.result[index]),
                     ),
                   );
                 }),
           );
         } else
-          return Empty(); //todo fix this issue
+          return Empty();
       },
     );
   }

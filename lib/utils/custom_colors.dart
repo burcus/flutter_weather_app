@@ -13,7 +13,6 @@ class CustomColors {
   static const Color scaffoldBg = Color(0xFFe6e6e6);
   static const Color clearGreen = Color(0xFF517c33);
   static const Color weatherCardsColor = Color(0xFFc2c2bb);
-
   //Icons
   static const Color flashRain = Color(0xFF747e8c);
   static const Color cloudyGray = Color(0xFF92d6f7);

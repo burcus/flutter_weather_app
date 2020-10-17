@@ -31,8 +31,36 @@ class _InputTextState extends State<InputText> {
 
   @override
   Widget build(BuildContext context) {
+    return TextField(
+      autofocus: false,
+      focusNode: _focusNode,
+      controller: _textController,
+      cursorColor: Colors.white70,
+      style: CustomTextTheme(context).body1,
+      textAlign: TextAlign.start,
+      textInputAction: TextInputAction.search,
+      onSubmitted: (param) {
+        context.bloc<WeatherBloc>().add(GetWeatherInfo(param));
+        context.bloc<NetworkBloc>().add(
+            UpdateConnectivityState()); //avoid shows welcome back when network is reconnected but no place
+        _textController.clear();
+      },
+      decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: _hintText,
+          hintStyle: CustomTextTheme(context).body1,
+          contentPadding: EdgeInsets.only(left: SizeConfig.widthMultiplier * 5),
+          suffixIcon: Icon(
+            Icons.search,
+            color: Colors.white38,
+          )),
+    );
+  }
+}
+
+/*
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      //backgroundColor: Colors.transparent,
       body: TextField(
         autofocus: false,
         focusNode: _focusNode,
@@ -54,9 +82,9 @@ class _InputTextState extends State<InputText> {
                 EdgeInsets.only(left: SizeConfig.widthMultiplier * 5),
             suffixIcon: Icon(
               Icons.search,
-              color: Colors.white70,
+              color: Colors.white38,
             )),
       ),
     );
-  }
-}
+
+ */
