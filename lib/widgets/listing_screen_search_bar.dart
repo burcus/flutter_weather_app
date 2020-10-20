@@ -11,7 +11,7 @@ class ListingScreenSearchBar extends StatelessWidget {
       builder: (context, state) {
         if (state is WeatherLoadSuccess) {
           return Positioned(
-              top: SizeConfig.heightMultiplier * 0.95,
+              top: SizeConfig.safeAreaVertical * 1.2,
               child: SearchBar());
         } else {
           return Positioned(

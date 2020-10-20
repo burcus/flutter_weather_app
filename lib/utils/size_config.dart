@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 class SizeConfig {
   static double _screenWidth;
   static double _screenHeight;
-  static double _safeAreaHeight;
+  static double safeAreaHeight;
   static var _safeAreaPadding;
-  static double _safeAreaVertical;
+  static double safeAreaVertical;
 
   static double _blockWidth;
   static double _blockHeight;
@@ -19,18 +19,19 @@ class SizeConfig {
 
   void init(BuildContext context, Orientation orientation) {
     _safeAreaPadding = MediaQuery.of(context).padding;
-    _safeAreaVertical = _safeAreaPadding.top + _safeAreaPadding.bottom;
+    safeAreaVertical = _safeAreaPadding.top + _safeAreaPadding.bottom;
 
     _screenHeight = MediaQuery.of(context).size.height;
     _screenWidth = MediaQuery.of(context).size.width;
 
-    _safeAreaHeight = _screenHeight - _safeAreaVertical;
-    if(orientation == Orientation.landscape) _safeAreaHeight = _screenHeight;
+    safeAreaHeight = _screenHeight - safeAreaVertical;
+    if(orientation == Orientation.landscape) safeAreaHeight = _screenHeight;
 
     _blockWidth = _screenWidth / 100;
-    _blockHeight = _safeAreaHeight / 100;
+//    _blockHeight = _safeAreaHeight / 100;
+    _blockHeight = _screenHeight / 100;
 
-    textMultiplier = _blockHeight;
+    textMultiplier = orientation == Orientation.portrait ? _blockHeight : _blockHeight * 1.2;
     imageSizeMultiplier = _blockWidth;
     heightMultiplier = _blockHeight;
     widthMultiplier = _blockWidth;
