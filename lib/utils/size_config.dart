@@ -35,7 +35,5 @@ class SizeConfig {
     imageSizeMultiplier = _blockWidth;
     heightMultiplier = _blockHeight;
     widthMultiplier = _blockWidth;
-
-    cardContainerWidth = orientation == Orientation.landscape ?  widthMultiplier * 40 : widthMultiplier * 100;
   }
 }

@@ -9,7 +9,7 @@ class MessageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
+      padding: EdgeInsets.only(top: SizeConfig.heightMultiplier * 40),
       child: Text(this.errorMessage, style: CustomTextTheme(context).warning),
     );
   }

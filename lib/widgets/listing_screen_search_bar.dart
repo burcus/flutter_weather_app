@@ -11,12 +11,25 @@ class ListingScreenSearchBar extends StatelessWidget {
       builder: (context, state) {
         if (state is WeatherLoadSuccess) {
           return Positioned(
-              top: SizeConfig.safeAreaVertical * 1.2,
-              child: SearchBar());
+              top: SizeConfig.safeAreaVertical * 1.2, child: SearchBar());
         } else {
           return Positioned(
               top: SizeConfig.heightMultiplier * 35,
-              child: SearchBar());
+              child: Column(
+                children: [
+                  Container(
+                    width: SizeConfig.widthMultiplier * 100,
+                    height: SizeConfig.heightMultiplier * 20,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/logo_transparent.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  SearchBar()
+                ],
+              ));
         }
       },
     );

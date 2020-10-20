@@ -8,11 +8,11 @@ class CustomTextTheme extends TextTheme{
 
    @override
    TextStyle get display1 => GoogleFonts.ptSans(color: Colors.white, fontWeight: FontWeight.w500, shadows: [Shadow(blurRadius: 3,
-       color: Colors.white54, offset: Offset(1.0, 1.0))], fontSize: 9.72 * SizeConfig.textMultiplier);
+       color: Colors.white54, offset: Offset(1.0, 1.0))], fontSize: 8.5 * SizeConfig.textMultiplier);
 
    @override
    TextStyle get display2 => GoogleFonts.ptSans(color: Colors.white.withOpacity(0.8), shadows: [Shadow(blurRadius: 3,
-       color: Colors.black45, offset: Offset(2, 1))], fontWeight: FontWeight.w500, fontSize: 3.5 * SizeConfig.textMultiplier);
+       color: Colors.black45, offset: Offset(2, 1))], fontWeight: FontWeight.w500, fontSize: 3 * SizeConfig.textMultiplier);
 
    @override
    TextStyle get display3 => GoogleFonts.ptSans(color: Colors.white70, shadows: [Shadow(blurRadius: 3,

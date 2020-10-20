@@ -12,24 +12,27 @@ class WeatherCards extends StatelessWidget {
       builder: (context, state) {
         if (state is WeatherLoadSuccess) {
           return Container(
-            width: SizeConfig.cardContainerWidth,
+            width: SizeConfig.widthMultiplier * 100,
             height: SizeConfig.heightMultiplier * 15,
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: state.weather.result.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return new GestureDetector(
-                    onTap: () {
-                      context
-                          .bloc<ThemeBloc>()
-                          .add(GetTheme(state.weather.result[index]));
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.all(SizeConfig.heightMultiplier * 2),
-                      child: WeatherCard(state.weather.result[index]),
-                    ),
-                  );
-                }),
+            child: Center(
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: state.weather.result.length,
+                  shrinkWrap: true,
+                  itemBuilder: (BuildContext context, int index) {
+                    return new GestureDetector(
+                      onTap: () {
+                        context
+                            .bloc<ThemeBloc>()
+                            .add(GetTheme(state.weather.result[index]));
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(SizeConfig.heightMultiplier * 2),
+                        child: WeatherCard(state.weather.result[index]),
+                      ),
+                    );
+                  }),
+            ),
           );
         } else
           return Empty();
