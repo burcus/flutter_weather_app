@@ -10,47 +10,26 @@ class CustomTextTheme extends TextTheme{
    TextStyle get display1 => GoogleFonts.ptSans(color: Colors.white, fontWeight: FontWeight.w500, shadows: [Shadow(blurRadius: 3,
        color: Colors.white54, offset: Offset(1.0, 1.0))], fontSize: 9.72 * SizeConfig.textMultiplier);
 
-   TextStyle get display1Dark => GoogleFonts.ptSans(color: Colors.black87, fontWeight: FontWeight.w500, shadows: [Shadow(blurRadius: 3,
-       color: Colors.white54, offset: Offset(1.0, 1.0))], fontSize: 9.72 * SizeConfig.textMultiplier);
-
    @override
    TextStyle get display2 => GoogleFonts.ptSans(color: Colors.white.withOpacity(0.8),shadows: [Shadow(blurRadius: 3,
-       color: Colors.black45, offset: Offset(2, 1))], fontWeight: FontWeight.w500, fontSize: 3.5 * SizeConfig.textMultiplier);
-
-   TextStyle get display2Dark => GoogleFonts.ptSans(color: Colors.black87, shadows: [Shadow(blurRadius: 3,
        color: Colors.black45, offset: Offset(2, 1))], fontWeight: FontWeight.w500, fontSize: 3.5 * SizeConfig.textMultiplier);
 
    @override
    TextStyle get display3 => GoogleFonts.ptSans(color: Colors.white70, fontWeight: FontWeight.w500, fontSize: 2.31 * SizeConfig.textMultiplier);
 
-   TextStyle get display3Dark => GoogleFonts.ptSans(color: Colors.black87, fontWeight: FontWeight.w500, fontSize: 2.31 * SizeConfig.textMultiplier);
-
-
    @override
    TextStyle get display4 => GoogleFonts.ptSans(color: Colors.white70, fontWeight: FontWeight.w500, fontSize: 2 * SizeConfig.textMultiplier);
-
-   TextStyle get display4Dark => GoogleFonts.ptSans(color: Colors.black87, fontWeight: FontWeight.w500, fontSize: 2 * SizeConfig.textMultiplier);
-
 
    @override
    TextStyle get title => GoogleFonts.ptSans(color: Colors.white54, fontWeight: FontWeight.w500, fontSize: 1.77 * SizeConfig.textMultiplier);
 
-   TextStyle get titleDark => GoogleFonts.ptSans(color: Colors.black87, fontWeight: FontWeight.w500, fontSize: 1.77 * SizeConfig.textMultiplier);
-
-
    @override
    TextStyle get subtitle => GoogleFonts.ptSans(color: Colors.white54, fontWeight: FontWeight.w500, fontSize: 1.7 * SizeConfig.textMultiplier);
-
-   TextStyle get subtitleDark => GoogleFonts.ptSans(color: Colors.black87, fontWeight: FontWeight.w500, fontSize: 1.7 * SizeConfig.textMultiplier);
 
    @override
   TextStyle get body1 => GoogleFonts.ptSans(color: Colors.white60, shadows: [Shadow(blurRadius: 3,
        color: Colors.black26, offset: Offset(0.1, 0.1))], fontStyle: FontStyle.italic, fontWeight: FontWeight.w300, fontSize: 2.32 * SizeConfig.textMultiplier, decoration: TextDecoration.none);
 
-   TextStyle get body1Dark => GoogleFonts.ptSans(color: Colors.black87, shadows: [Shadow(blurRadius: 3,
-       color: Colors.black26, offset: Offset(0.1, 0.1))], fontStyle: FontStyle.italic, fontWeight: FontWeight.w300, fontSize: 2.32 * SizeConfig.textMultiplier, decoration: TextDecoration.none);
-
    TextStyle get warning => GoogleFonts.ptSans(color: Colors.white30, fontStyle: FontStyle.italic, fontWeight: FontWeight.w400, fontSize: 2.31 * SizeConfig.textMultiplier);
 
-   TextStyle get warningDark => GoogleFonts.ptSans(color: Colors.black87, fontStyle: FontStyle.italic, fontWeight: FontWeight.w400, fontSize: 2.31 * SizeConfig.textMultiplier);
 }
