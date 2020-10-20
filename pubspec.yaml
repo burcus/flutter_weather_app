@@ -27,13 +27,13 @@ dependencies:
   data_connection_checker: ^0.3.4
   flutter_bloc: ^6.0.3
   flutter_launcher_icons: ^0.7.5
-  flutter_svg: 0.17.4
+  flutter_svg: ^0.19.1
   fluttericon: ^1.0.7
   geocoder: ^0.2.1
   geolocator: ^6.0.0+4
   google_fonts: ^1.1.0
   http: ^0.12.2
-  flare_flutter: ^2.0.6
+  flutter_weather_bg: ^2.8.2
 
 dev_dependencies:
   flutter_test:
@@ -54,13 +54,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/weather_status/clear.jpg
-    - assets/images/weather_status/overcast.jpg
-    - assets/images/weather_status/cloud.jpg
-    - assets/images/weather_status/partly-cloudy.jpg
-    - assets/images/weather_status/partly-cloudy-more-clear.jpg
-    - assets/images/weather_status/rain.jpg
-    - assets/images/weather_status/thunder.jpg
+    - assets/images/weather_status/
     - assets/images/default.jpg
     # To add assets to your application, add an assets section, like this:
     # assets:

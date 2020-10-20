@@ -13,12 +13,6 @@ class WeatherDetails extends StatelessWidget {
         return Container(
           width: MediaQuery.of(context).size.width / 1.5,
           height: MediaQuery.of(context).size.height / 6,
-          /*
-          decoration: BoxDecoration(
-            color: Colors.transparent,
-            border: Border.all(width: 2),
-          ),
-           */
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[

@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_weather_bg/flutter_weather_bg.dart';
 import 'theme.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
@@ -7,33 +8,31 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   @override
   Stream<ThemeState> mapEventToState(ThemeEvent event) async* {
     if(event is GetTheme) {
-      String image;
+      WeatherType weatherType;
+
       switch(event.weather.description) {
         case "kapalı":
-          image = "overcast";
-          break;
-        case "parçalı az bulutlu":
-          image = "partly-cloudy";
+          weatherType = WeatherType.overcast;
           break;
         case "az bulutlu":
-          image = "partly-cloudy-more-clear";
+        case "parçalı az bulutlu":
+        case "parçalı bulutlu":
+          weatherType = WeatherType.cloudy;
+          break;
+        case "hafif yağmur":
+          weatherType = WeatherType.lightRainy;
           break;
         case "orta şiddetli yağmur":
-        case "hafif yağmur":
-          image = "rain";
+          weatherType = WeatherType.middleRainy;
           break;
         case "açık":
-          image = "clear";
-          break;
-        case "parçalı bulutlu":
-          image = "cloud";
+          weatherType = WeatherType.sunny;
           break;
         case "şiddetli yağmur":
-          image = "thunder";
+          weatherType = WeatherType.heavyRainy;
           break;
       }
-      String imagePath = "assets/images/weather_status/" + image + ".jpg";
-      yield ThemeLoaded(imagePath, event.weather);
+      yield ThemeLoaded(weatherType, event.weather);
     }
   }
 }

@@ -40,6 +40,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: OrientationBuilder(builder: (context, orientation) {
         SizeConfig().init(context, orientation);
         return MultiBlocListener(listeners: [
@@ -55,8 +56,7 @@ class HomePage extends StatelessWidget {
             listener: (context, state) {
               if (state is WeatherLoadSuccess) {
                 final weathers = state.weather.result;
-                context.bloc<ThemeBloc>().add(GetTheme(weathers[
-                    0])); //start getting theme before navigate to listing screen
+                context.bloc<ThemeBloc>().add(GetTheme(weathers[0])); //start getting theme before navigate to listing screen
               } //TODO network problem
             },
           ),
