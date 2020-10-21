@@ -4,18 +4,21 @@ import 'package:flutterweatherapp/widgets/widgets.dart';
 class AppBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: <Widget>[
-        Stack(
-          alignment: Alignment.center,
+    return SingleChildScrollView(
+      primary: false,
+      child: Column(
           children: <Widget>[
-            WeatherThemeImage(),
-            ListingScreenSearchBar(),
-            ListingScreenBody(),
-            ListingScreenCards(),
-          ],
-        ),
-      ],
+          Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              WeatherThemeImage(),
+              ListingScreenSearchBar(),
+              ListingScreenBody(),
+              ListingScreenCards(),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
