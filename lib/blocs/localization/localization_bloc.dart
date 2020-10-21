@@ -10,7 +10,6 @@ class LocalizationBloc extends Bloc<LocalizationEvent, LocalizationState> {
   Stream<LocalizationState> mapEventToState(LocalizationEvent event) async* {
     if (event is CheckPermission) {
       LocationPermission locationPermission = await checkPermission();
-      //switch (locationPermission){}
       print(locationPermission);
       yield getStateClass(locationPermission);
     } else if (event is RequestPermission) {
