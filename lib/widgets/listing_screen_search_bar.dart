@@ -23,7 +23,7 @@ class ListingScreenSearchBar extends StatelessWidget {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage("assets/images/logo_transparent.png"),
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),
